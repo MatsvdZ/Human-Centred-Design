@@ -1,16 +1,22 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles/style.css" />
     <title>Hoor het beeld</title>
-</head>
-<body>
-    
+  </head>
+  <body>
+    <div class="player" id="player">
+      <video id="video" controls>
+        <source src="content/the-office-clips.mp4" type="video/mp4" />
+      </video>
 
+      <div id="subtitle" class="subtitle"></div>
+    </div>
 
+    <button onclick="goFullscreen()">Fullscreen</button>
 
     <script src="script.js"></script>
-</body>
+  </body>
 </html>

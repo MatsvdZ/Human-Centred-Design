@@ -1,0 +1,66 @@
+body {
+  margin: 0;
+  background: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.player {
+  position: relative;
+  width: 800px;
+  max-width: 100%;
+}
+
+video {
+  width: 100%;
+  display: block;
+}
+
+/* 🔥 subtitles over video */
+.subtitle {
+  position: absolute;
+  bottom: 10%;
+  width: 100%;
+  text-align: center;
+  font-size: 1.5rem;
+  color: white;
+  text-shadow: 2px 2px 8px black;
+  pointer-events: none;
+}
+
+.sound {
+  color: #ffd54f;
+  font-style: italic;
+}
+
+.music {
+  color: #81d4fa;
+  font-style: italic;
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: translateX(-30px);
+  }
+  50% {
+    transform: translateX(30px);
+    transform: rotate(360deg);
+  }
+  75% {
+    transform: translateX(-30px);
+  }
+  100% {
+    transform: translateX(0);
+    transform: rotate(0deg);
+  }
+}
+
+.loud {
+  animation: shake 0.3s;
+}
