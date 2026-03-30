@@ -34,3 +34,23 @@ Ik kan bijvoorbeeld het volgende doen:
 - geluidseffecten: labels in de tekst?
 - Muziek/sfeer: ook labels?
 - emotie: spelen met size en animaties in de tekst?
+
+
+## Eeste checkout (30-03)
+### Wat heb ik vandaag gedaan?
+Ik heb vandaag gewoon lekker simpel een eerste opzetje gemaakt waarin ik een video heb uitgekozen en deze heb voorzien van de eerste subtitles, en alvast gekeken naar de mogelijkheden die er zijn op het gebied van animaties en kleuren.
+
+
+### Hoe lang duurde het?
+Ik heb vandaag ongeveer zo'n 3 uur echt aan mijn projectje kunnen zitten. Dit komt doordat we en de intro hadden, maar ook de weekly geek. 
+
+
+
+### Wat heb ik geleerd?
+Ik heb geleerd hoe je met JavaScript tekst kan maken en syncen op basis van de tijd in de video. Ook heb ik geleerd hoe je deze tekst kan animeren. Ook kan ik de video nu op fullscreen zetten inclusief de subtitles met een kleine omweg.
+
+
+
+
+### Wat ga ik morgen doen?
+Morgen ga ik testen met Darice. Daarna ga ik kijken wat zij precies zou willen en ga ik daar verder mee aan de slag.
