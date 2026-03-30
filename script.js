@@ -5,9 +5,9 @@ const subtitle = document.getElementById("subtitle");
 const subtitles = [
   { start: 2.5, end: 5.5, text: "Dwight (panicked, loud): Uh-oh, okay, okay, nobody panic!", type: "dialogue loud" },
 
-  { start: 5.5, end: 7.5, text: "Dwight (urgent): Listen up, listen up!", type: "dialogue" },
+  { start: 5.5, end: 7.5, text: "Dwight (urgent): Listen up, listen up!", type: "music" },
 
-  { start: 7.5, end: 9.5, text: "Dwight (commanding): Everyone, follow me to the shelter.", type: "dialogue" },
+  { start: 7.5, end: 9.5, text: "Dwight (commanding): Everyone, follow me to the shelter.", type: "sound" },
 
   { start: 9.5, end: 11.5, text: "Dwight: We've got enough food for 14 days.", type: "dialogue" },
 
