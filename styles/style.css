@@ -1,16 +1,14 @@
 body {
   margin: 0;
   background: black;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+  font-family: sans-serif, monospace;
 }
 
 .player {
   position: relative;
-  width: 800px;
-  max-width: 100%;
+  width: 80vw;
+
+  margin: 3rem auto 0 auto;
 }
 
 video {
@@ -18,16 +16,44 @@ video {
   display: block;
 }
 
-/* 🔥 subtitles over video */
+.fullscreen {
+  margin-right: 2rem;
+}
+
+.controls {
+  position: relative;
+  left: 10%;
+  margin-top: 1rem;
+}
+
+button {
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+
+  cursor: pointer;
+}
+
 .subtitle {
   position: absolute;
   bottom: 10%;
-  width: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+
+  width: fit-content;
+  max-width: 80%;
+  padding: 0.5rem 1rem;
   text-align: center;
   font-size: 1.5rem;
+  background: rgba(0, 0, 0, 0.8);
   color: white;
   text-shadow: 2px 2px 8px black;
+  border-radius: 8px;
   pointer-events: none;
+}
+
+.player:fullscreen .subtitle {
+  bottom: 15%;
 }
 
 .sound {
@@ -43,21 +69,18 @@ video {
 @keyframes shake {
   0% {
     transform: translateX(0);
-    transform: rotate(0deg);
   }
   25% {
     transform: translateX(-30px);
   }
   50% {
     transform: translateX(30px);
-    transform: rotate(360deg);
   }
   75% {
     transform: translateX(-30px);
   }
   100% {
     transform: translateX(0);
-    transform: rotate(0deg);
   }
 }
 
