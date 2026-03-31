@@ -118,3 +118,99 @@ A short summary of this chapter is in place, since it is the basis for the proje
 * The Inclusive Design Principles also assume the patterns we use nowadays are well tested and good to use.
 * By solely focusing on the content they ignore the possible insights that the identity and personality of the excluded people have to offer
 * The principle of adding value makes sense, but if we accept the three points above we can assume that we haven’t investigated all options yet. Adding nonsense to the mix can help in coming up with completely new ideas.
+
+# eerste test (31-03)
+Tijdens de eerste test met Darice hebben we één voor één ons eerste prototype laten zien. Ik heb tijdens deze tests de volgende notities gemaakt:
+
+## Vragen Darice
+- Wat vind je van het kleurgebruik, zo laten? verder uitwerken?
+  
+- Wat vind je van het idee van het loshalen van geluiden ten opzichte van het dialoog?
+
+- Zou je misschien kleuren per persoon willen, of wordt dit dan teveel?
+  
+- Zou je meer animaties willen voor de ondertiteling, om zo de vibe meer over te brengen, of wordt dit dan te moeilijk lezen?
+
+
+
+## Notes:
+- Tekstkleur moet altijd goed leesbaar zijn (CONTRAST)
+
+- Tekst moet groot genoeg zijn
+
+- Met dubbele punt voor namen voor de tekst die iemand zegt. 
+
+- Geen opmerkingen over kleuren
+
+- Toon laten zien wanneer dit niet meteen af te lezen is
+
+- Ook nadenken over de font voor de tone of voice
+
+- De tekst en font misschien aanpasbaar maken voor extra voorkeuren
+
+- Eventueel een soort equalizer?
+
+- Ze vind geluiden op de achtergrond echt bijdragen bij een film/serie
+
+- Ze kan body language goed lezen
+
+- De dingen die Darice onmogelijk kan weten, wilt ze graag terugzien
+
+- Bij liedjes zijn subtitles ook fijn
+
+- Achtergrond geluid moet beschrijvend zijn
+
+- Het moet allemaal niet te flashy zijn met flitsende beelden ect.
+
+- Lettertypes: Sans serif, monospace
+
+	Serif voor artikelen
+
+	Op schermen is sans serif en monospace beter
+
+
+
+## Aannames van mensen over iemand die doof is:
+
+Darice vertelt dat ze doof is, maar veel mensen denken dan dat ze nog steeds wel iets kan horen.
+
+Mensen proberen toch altijd te praten tegen Darice, ook als het haar niet lukt om lip te lezen.
+
+Ze moet vak mensen vragen om iets te herhalen.
+
+Je moet echt de aandacht trekken.
+
+## Handig om te checken
+Check eerste aflevering om naar ondertiteling te kijken!!!!!!!!!
+Darice heeft ons ook verteld dat een nieuwe serie die ze nu kijkt een goed voorbeeld heeft van hoe ze graag ondertiteling wilt. Dus ik ga een stukje van de eerste aflevering kijken zonder geluid en met de ondertiteling, om zo te kijken hoe die precies in elkaar zit.
+
+<img width="936" height="684" alt="Screenshot 2026-03-31 at 14 06 45" src="https://github.com/user-attachments/assets/57048285-396f-4090-92a4-1416f8ac3437" />
+
+
+
+## Tweede checkout (31-03)
+### Wat heb ik vandaag gedaan?
+We hebben vandaag de eerste tests gedaan van ons eerste ideetje met Darice. Hierbij heb ik heel wat notities gemaakt over dingen waar ik op kan letten en wat ik kan aanpassen om passend te maken. 
+
+Het eerste wat ik meteen heb aangepakt is het zorgen dat het contrast van de kleuren al meteen iets beter is. Ik heb dit gedaan door achter de tekst een zwarte achtergrond te zetten die ervoor zorgt dat de tekst veel duidelijker te zien is.
+
+<img width="480" height="108" alt="Screenshot 2026-03-31 at 14 31 23" src="https://github.com/user-attachments/assets/e0b4a981-77db-460a-a56f-8083ae01a7ca" />
+
+Het volgende wat ik heb toegevoegd is de optie om de ondertiteling grote en kleiner te maken. Dit heb ik met een klein stukje JavaScript gedaan.
+
+Ik heb ook nog even de font aangepast naar een van de favoriete fonts van Darice
+
+### Hoe lang duurde het?
+Ik heb vandaag zo'n 3,5 uurtjes aan mijn werk kunnen zitten. Uiteraard heb ik vooral gewerkt aan de feedback van Darice en hier voortgang mee geboekt.
+
+
+### Wat heb ik geleerd?
+Ik heb vandaag eigenlijk geleerd hoe je kunt testen met iemand die in ons geval doof is. Dit was echt best lastig, omdat de communicatie niet echt soepel kan verlopen. Je kan ook niet echt dingen laten zien en tegelijkertijd vragen stellen. Het moet eigenlijk dus stap voor stap wat ook redelijk wat tijd kost en je moet elke keer wachten totdat ze heeft gelezen en klaar is.
+
+
+### Wat ga ik de volgende keer doen?
+Ik ga volgende keer alweer meteen mijn volgende prototype testen met Darice omdat dit zo uitkomt met de vrije dagen die we tussendoor hebben. Dus ik ga misschien nog ergens voor in de vrije dagen nog eventjes kijken of ik nog snel wat toe kan voegen.
+
+
+
+
