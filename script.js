@@ -7,7 +7,7 @@ const subtitles = [
 
   { start: 3, end: 4, text: "[Power switches off]", type: "sound" },
 
-  { start: 4, end: 6, text: "Dwight (panicked, loud): Uh-oh, okay, okay, nobody panic!", type: "dialogue" },
+  { start: 4, end: 6, text: "Dwight (panicked, loud): Uh-oh, okay, okay, nobody panic!", type: "dialogue loud" },
 
   { start: 5.5, end: 7.5, text: "(urgent): Listen up, listen up!", type: "dialogue" },
 
