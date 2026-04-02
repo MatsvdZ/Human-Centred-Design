@@ -212,5 +212,15 @@ Ik heb vandaag eigenlijk geleerd hoe je kunt testen met iemand die in ons geval 
 Ik ga volgende keer alweer meteen mijn volgende prototype testen met Darice omdat dit zo uitkomt met de vrije dagen die we tussendoor hebben. Dus ik ga misschien nog ergens voor in de vrije dagen nog eventjes kijken of ik nog snel wat toe kan voegen.
 
 
+# Feedback gesprek (02-04)
+
+Ik heb vandaag een klein feedback gesprek gehad met Leonie en dit is wat daar uitkwam:
+
+- Ik luister goed naar de gebruikerseisen
+- Er is al een sterke basis
+- Ik moet gewoon dingen proberen en kijken of dit aanslaat of niet
+- Ik heb ook goed door waar ik precies mee bezig ben, dus dat is fijn om te horen
+
+Ik kan hier denk ik wel goed mee verder!
 
 
