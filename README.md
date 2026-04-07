@@ -224,3 +224,57 @@ Ik heb vandaag een klein feedback gesprek gehad met Leonie en dit is wat daar ui
 Ik kan hier denk ik wel goed mee verder!
 
 
+# Tweede test (07-04)
+Voor aanvang van de test heb ik nog een aantal kleine en subtiele animaties toegevoegd aan de tekst om te testen met Darice of zij dit een goed en vooral nuttig idee vind.
+
+## Notes:
+- Je hoeft geen perfecte zinnen te tonen, er mag uhm, uh ect tussen zitten.
+
+- Niet te volle website, duidelijk de content in beeld, niks flashy.
+
+- Denk na over hoe je dit op mobiel wilt laten zien.
+
+- Nadenken over krachtige woorden stijlen??
+
+- Mogelijk een gradient bij een video kan, maar wel op een subtiele manier en moet daadwerkelijk wat toevoegen.
+
+- Startscherm met wat je precies gaat kijken, dit weghalen wanneer de video start.
+
+- Ondertiteling kunnen veranderen van taal.
+
+- Achtergrond geluiden sterkte laten zien!!!!! Als je schrikt oud of een irritant geluid een andere kleur geven of iets anders weergeven.
+
+- Een ‘full experience mode’ en een ‘standaard’ experience.
+
+Ik wil me voor de volgende test vooral richten op de experience en standaard modus. Ik denk dat ik hiermee wel een aantal leuke dingen kan doen.
+
+De animaties in de tekst vond Darice een leuk idee! Dit  ga ik verder nog uitwerken voor de volgende test om te kijken of ik dit dan op meerdere plekken effectief kan gebruiken.
+
+
+
+## Derde checkout (31-03)
+### Wat heb ik vandaag gedaan?
+We begonnen de dag met een weekly geek over een artikel van Léonie Watson over accessibility.
+
+Hierna hebben we nog even kort kunnen werken aan ons project, waar ik nog een aantal kleine tweaks heb gemaakt bij de tekst animaties.
+
+Toen begonnen we met de test met Darice. Tijdens deze test heb ik notes gemaakt en mijn project laten zien aan Darice. Hier kwam veel positieve feedback uit, en natuurlijk ook feedback waarmee ik weer nieuwe dingen kan gaan maken. Deze staan dan ook beschreven in de notes van de test.
+
+Daarna ben ik nog even aan de slag gegaan en heb ik een begin gemaakt aan een aantal van de iets kleinere ideeën die ik heb, zodat ik maandag volle bak kan focussen op de experience modus.
+
+
+### Hoe lang duurde het?
+Ik heb vandaag ongeveer zo'n 2,5 / 3 uurtjes gewerkt aan mijn project buiten het testen om. Hierin heb ik een begin gemaakt aan een aantal kleinere functies.
+
+### Wat heb ik geleerd?
+Ik heb vandaag weer een beetje meer geleerd hoe ik met iemand kan testen die in dit geval doof is, en daar heb ik mij dan ook iets mee aangepast. 
+
+Verder heb ik bij andere mensen ook ideeën gezien waar ik ook iets mee kan doen, dus daar heb ik ook wat van geleerd.
+
+### Wat ga ik de volgende keer doen?
+Ik ga volgende keer aan de slag met een aantal van de functies die ik wil implementeren zoals de experience mode. Als ik tijd heb wil ik ook kijken of ik bijvoorbeeld verschillende talen kan toevoegen en hoe ik de algemene styling wat kan verbeteren.
+
+
+
+
+
