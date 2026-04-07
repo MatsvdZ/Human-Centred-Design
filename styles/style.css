@@ -1,7 +1,8 @@
 body {
   margin: 0;
-  background: black;
+  background: rgb(66, 66, 66);
   font-family: sans-serif, monospace;
+  overflow-x: hidden;
 }
 
 .player {
@@ -56,6 +57,10 @@ button {
   bottom: 15%;
 }
 
+/*******************/
+/* DIALOGUE STYLES */
+/*******************/
+
 .sound {
   color: #ffd54f;
   font-style: italic;
@@ -66,24 +71,89 @@ button {
   font-style: italic;
 }
 
-@keyframes shake {
+.loud {
+  animation: shake 0.3s;
+}
+
+.pulse {
+  animation: pulse 0.6s ease;
+}
+
+.music {
+  animation: softAppear 0.4s ease;
+}
+
+.tense {
+  animation: tenseText 0.4s ease;
+}
+
+.fun-reveal {
+  animation: tinyBounce 0.3s ease;
+}
+
+/*************/
+/* KEYFRAMES */
+/*************/
+
+@keyframes tenseText {
   0% {
-    transform: translateX(0);
-  }
-  25% {
-    transform: translateX(-30px);
+    letter-spacing: 0;
   }
   50% {
-    transform: translateX(30px);
-  }
-  75% {
-    transform: translateX(-30px);
+    letter-spacing: 1px;
   }
   100% {
-    transform: translateX(0);
+    letter-spacing: 0;
   }
 }
 
-.loud {
-  animation: shake 0.3s;
+@keyframes softAppear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes tinyBounce {
+  0% {
+    transform: translateX(-50%) translateY(0);
+  }
+  30% {
+    transform: translateX(-50%) translateY(-40px);
+  }
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(-50%) translateX(0);
+  }
+  25% {
+    transform: translateX(-50%) translateX(-10px);
+  }
+  50% {
+    transform: translateX(-50%) translateX(10px);
+  }
+  75% {
+    transform: translateX(-50%) translateX(-10px);
+  }
+  100% {
+    transform: translateX(-50%) translateX(0);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: translateX(-50%) scale(1);
+  }
+  50% {
+    transform: translateX(-50%) scale(1.03);
+  }
+  100% {
+    transform: translateX(-50%) scale(1);
+  }
 }
