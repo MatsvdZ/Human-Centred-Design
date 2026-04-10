@@ -275,6 +275,19 @@ Verder heb ik bij andere mensen ook ideeën gezien waar ik ook iets mee kan doen
 Ik ga volgende keer aan de slag met een aantal van de functies die ik wil implementeren zoals de experience mode. Als ik tijd heb wil ik ook kijken of ik bijvoorbeeld verschillende talen kan toevoegen en hoe ik de algemene styling wat kan verbeteren.
 
 
+# Feedback gesprek (10-04)
+Ik heb vandaag weer een klein feedback gesprek gehad, en daar kwam eigenlijk een heel leuk punt uit:
+
+- Een soort volume meter voor de heftigheid van de experience modus. Dus ik kan zorgen dat Darice zelf kan kiezen hoe heftig animaties en dergelijke zijn.
+
+Ik vind dit echt een leuk idee, en ik denk dat dit ook wel een toegevogede waarde kan zijn voor mijn project. Dit komt ook mooi uit, want dit is precies waar ik volgende keer mee aan de slag wil gaan.
+
+Ik ga nog bedenken hoe ik het precies vorm wil geven en op wat voor manier ik de tekst echt op een soort exponentiele manier kan aanpassen qua heftigheid.
+
+
+
+
+
 
 
 
