@@ -7,20 +7,53 @@
     <title>Hoor het beeld</title>
   </head>
   <body>
-    <div class="player" id="player">
-      <video id="video" controls>
-        <source src="content/the-office-clips.mp4" type="video/mp4" />
-      </video>
+    <main class="page">
+      <h1>Movie Experience Player</h1>
+      <p>
+        Standaard modus toont rustige captions. Met de slider kun je de
+        experience-modus versterken voor meer sfeer, emotie en visuele
+        geluidsondersteuning.
+      </p>
 
-      <div id="subtitle" class="subtitle"></div>
-    </div>
+      <div class="player" id="player">
+        <video id="video" controls preload="metadata">
+          <source src="content/the-office-clips.mp4" type="video/mp4" />
+          Je browser ondersteunt deze video niet.
+        </video>
 
-    <div class="controls">
-      <button class="fullscreen" onclick="goFullscreen()">Fullscreen</button>
-      <button id="decrease">A-</button>
-      <button id="increase">A+</button>
-    </div>
+        <div id="subtitle" class="subtitle"></div>
+      </div>
 
+      <div class="controls-panel">
+        <div class="top-controls">
+          <button id="decreaseFont" type="button">A-</button>
+          <button id="increaseFont" type="button">A+</button>
+          <button id="fullscreenBtn" type="button">Fullscreen</button>
+        </div>
+
+        <div class="experience-row">
+          <label for="experienceRange">Weergavemodus</label>
+          <input
+            type="range"
+            id="experienceRange"
+            min="0"
+            max="3"
+            step="1"
+            value="0"
+          />
+          <span id="experienceLabel">Standaard</span>
+        </div>
+
+        <div class="status-box">
+          <span class="status-pill"
+            >Modus: <strong id="modeStatus">Standaard</strong></span
+          >
+          <span class="status-pill"
+            >Tekstgrootte: <strong id="fontSizeStatus">24px</strong></span
+          >
+        </div>
+      </div>
+    </main>
     <script src="script.js"></script>
   </body>
 </html>

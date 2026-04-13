@@ -1,37 +1,40 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
-  background: rgb(66, 66, 66);
-  font-family: sans-serif, monospace;
-  overflow-x: hidden;
+  background: black;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.page {
+  width: min(1100px, 92vw);
+  margin: 2rem auto;
+}
+
+h1 {
+  margin-bottom: 0.5rem;
+  font-size: 1.8rem;
+}
+
+p {
+  margin-top: 0;
+  color: #d0d0d0;
 }
 
 .player {
   position: relative;
-  width: 80vw;
-
-  margin: 3rem auto 0 auto;
+  width: 100%;
+  margin: 0 auto;
 }
 
 video {
   width: 100%;
   display: block;
-}
-
-.fullscreen {
-  margin-right: 2rem;
-}
-
-.controls {
-  position: relative;
-  left: 10%;
-  margin-top: 1rem;
-}
-
-button {
-  font-size: 1rem;
-  padding: 0.5rem 1rem;
-
-  cursor: pointer;
+  border-radius: 12px;
+  background: black;
 }
 
 .subtitle {
@@ -42,24 +45,25 @@ button {
   z-index: 2;
 
   width: fit-content;
-  max-width: 80%;
-  padding: 0.5rem 1rem;
+  max-width: 82%;
+  padding: 0.6rem 1rem;
   text-align: center;
   font-size: 1.5rem;
-  background: rgba(0, 0, 0, 0.8);
+  line-height: 1.4;
+  background: rgba(0, 0, 0, 0.82);
   color: white;
   text-shadow: 2px 2px 8px black;
-  border-radius: 8px;
+  border-radius: 10px;
   pointer-events: none;
+  opacity: 1;
+  letter-spacing: 0;
+  filter: blur(0);
 }
 
 .player:fullscreen .subtitle {
   bottom: 15%;
+  max-width: 70%;
 }
-
-/*******************/
-/* DIALOGUE STYLES */
-/*******************/
 
 .sound {
   color: #ffd54f;
@@ -71,41 +75,132 @@ button {
   font-style: italic;
 }
 
-.loud {
-  animation: shake 0.3s;
+.controls-panel {
+  margin-top: 1rem;
+  display: grid;
+  gap: 1rem;
+  background: #111;
+  border: 1px solid #222;
+  border-radius: 12px;
+  padding: 1rem;
 }
 
-.pulse {
-  animation: pulse 0.6s ease;
+.top-controls,
+.experience-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
 }
 
-.music {
-  animation: softAppear 0.4s ease;
+button {
+  font-size: 1rem;
+  padding: 0.6rem 1rem;
+  cursor: pointer;
+  border: 0;
+  border-radius: 8px;
+  background: #f1f1f1;
+  color: #111;
 }
 
-.tense {
-  animation: tenseText 0.4s ease;
+button:hover {
+  opacity: 0.92;
 }
 
-.fun-reveal {
-  animation: tinyBounce 0.3s ease;
+.experience-row label {
+  min-width: 8rem;
+  font-weight: 700;
 }
 
-/*************/
-/* KEYFRAMES */
-/*************/
-
-@keyframes tenseText {
-  0% {
-    letter-spacing: 0;
-  }
-  50% {
-    letter-spacing: 1px;
-  }
-  100% {
-    letter-spacing: 0;
-  }
+.experience-row input[type="range"] {
+  flex: 1;
+  min-width: 180px;
 }
+
+.status-box {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  color: #ddd;
+  font-size: 0.95rem;
+}
+
+.status-pill {
+  background: #1b1b1b;
+  padding: 0.4rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid #2a2a2a;
+}
+
+/* ---------- Mode styling ---------- */
+
+.mode-standard {
+  animation: none !important;
+  filter: none !important;
+  letter-spacing: 0 !important;
+  box-shadow: none !important;
+}
+
+.mode-exp-1.fade-slide,
+.mode-exp-1.dialogue {
+  animation: fadeSlide 0.25s ease;
+}
+
+.mode-exp-1.music,
+.mode-exp-1.sound {
+  animation: softAppear 0.3s ease;
+}
+
+.mode-exp-2.dialogue,
+.mode-exp-2.fade-slide {
+  animation: fadeSlide 0.25s ease;
+}
+
+.mode-exp-2.music,
+.mode-exp-2.pulse {
+  animation: pulseSoft 0.55s ease;
+}
+
+.mode-exp-2.sound,
+.mode-exp-2.focus-in {
+  animation: focusIn 0.25s ease;
+}
+
+.mode-exp-2.loud,
+.mode-exp-2.shake-soft {
+  animation: shakeSoft 0.28s ease;
+}
+
+.mode-exp-2.awkward {
+  animation: awkwardText 0.3s ease;
+}
+
+.mode-exp-3.dialogue,
+.mode-exp-3.fade-slide {
+  animation: fadeSlide 0.28s ease;
+}
+
+.mode-exp-3.music,
+.mode-exp-3.pulse {
+  animation: pulseStrong 0.75s ease;
+  box-shadow: 0 0 18px rgba(129, 212, 250, 0.2);
+}
+
+.mode-exp-3.sound,
+.mode-exp-3.focus-in {
+  animation: focusInStrong 0.3s ease;
+}
+
+.mode-exp-3.loud,
+.mode-exp-3.shake-soft {
+  animation: shakeStrong 0.3s ease;
+}
+
+.mode-exp-3.awkward {
+  animation: awkwardTextStrong 0.38s ease;
+}
+
+/* ---------- Keyframes ---------- */
 
 @keyframes softAppear {
   from {
@@ -116,37 +211,18 @@ button {
   }
 }
 
-@keyframes tinyBounce {
-  0% {
-    transform: translateX(-50%) translateY(0);
+@keyframes fadeSlide {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(8px);
   }
-  30% {
-    transform: translateX(-50%) translateY(-40px);
-  }
-  100% {
+  to {
+    opacity: 1;
     transform: translateX(-50%) translateY(0);
   }
 }
 
-@keyframes shake {
-  0% {
-    transform: translateX(-50%) translateX(0);
-  }
-  25% {
-    transform: translateX(-50%) translateX(-10px);
-  }
-  50% {
-    transform: translateX(-50%) translateX(10px);
-  }
-  75% {
-    transform: translateX(-50%) translateX(-10px);
-  }
-  100% {
-    transform: translateX(-50%) translateX(0);
-  }
-}
-
-@keyframes pulse {
+@keyframes pulseSoft {
   0% {
     transform: translateX(-50%) scale(1);
   }
@@ -155,5 +231,103 @@ button {
   }
   100% {
     transform: translateX(-50%) scale(1);
+  }
+}
+
+@keyframes pulseStrong {
+  0% {
+    transform: translateX(-50%) scale(1);
+  }
+  50% {
+    transform: translateX(-50%) scale(1.055);
+  }
+  100% {
+    transform: translateX(-50%) scale(1);
+  }
+}
+
+@keyframes focusIn {
+  from {
+    opacity: 0;
+    filter: blur(2px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+@keyframes focusInStrong {
+  from {
+    opacity: 0;
+    filter: blur(3px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+@keyframes shakeSoft {
+  0% {
+    transform: translateX(-50%) translateX(0);
+  }
+  25% {
+    transform: translateX(-50%) translateX(-4px);
+  }
+  50% {
+    transform: translateX(-50%) translateX(4px);
+  }
+  75% {
+    transform: translateX(-50%) translateX(-3px);
+  }
+  100% {
+    transform: translateX(-50%) translateX(0);
+  }
+}
+
+@keyframes shakeStrong {
+  0% {
+    transform: translateX(-50%) translateX(0);
+  }
+  25% {
+    transform: translateX(-50%) translateX(-8px);
+  }
+  50% {
+    transform: translateX(-50%) translateX(8px);
+  }
+  75% {
+    transform: translateX(-50%) translateX(-6px);
+  }
+  100% {
+    transform: translateX(-50%) translateX(0);
+  }
+}
+
+@keyframes awkwardText {
+  0% {
+    opacity: 0;
+    letter-spacing: 0;
+  }
+  50% {
+    opacity: 1;
+    letter-spacing: 0.7px;
+  }
+  100% {
+    letter-spacing: 0;
+  }
+}
+
+@keyframes awkwardTextStrong {
+  0% {
+    opacity: 0;
+    letter-spacing: 0;
+  }
+  50% {
+    opacity: 1;
+    letter-spacing: 1.2px;
+  }
+  100% {
+    letter-spacing: 0;
   }
 }
