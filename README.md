@@ -251,8 +251,7 @@ Ik wil me voor de volgende test vooral richten op de experience en standaard mod
 De animaties in de tekst vond Darice een leuk idee! Dit  ga ik verder nog uitwerken voor de volgende test om te kijken of ik dit dan op meerdere plekken effectief kan gebruiken.
 
 
-
-## Derde checkout (31-03)
+## Derde checkout (07-04)
 ### Wat heb ik vandaag gedaan?
 We begonnen de dag met een weekly geek over een artikel van Léonie Watson over accessibility.
 
@@ -284,8 +283,18 @@ Ik vind dit echt een leuk idee, en ik denk dat dit ook wel een toegevogede waard
 
 Ik ga nog bedenken hoe ik het precies vorm wil geven en op wat voor manier ik de tekst echt op een soort exponentiele manier kan aanpassen qua heftigheid.
 
+## Vierde checkout (13-04)
+### Wat heb ik vandaag gedaan?
+Ik heb vandaag gewerkt aan mijn 'experience' en standaard modus. Ik heb een slider gemaakt met verschillende niveaus van heftigheid. Wat het dus nu eigenlijk doet is op het laagste standje vrijwel geen animaties en hele basic ondertiteling, en op de experience modus juiste veel animaties en ondertiteling met veel meer beschrijving. Je kan dit gewoon meteen aanpassen door de slider te gebruiken.
 
+### Hoe lang duurde het?
+Ik heb er vandaag zo'n 3/4 uurtjes aan gezeten. Dit is best lang omdat het best wel veel werk was voor de kleine details.
 
+### Wat heb ik geleerd?
+Ik heb vandaag een beetje geleerd hoe ik als het ware verschillende modusen kan maken en hier gebruik van kan maken.
+
+### Wat ga ik de volgende keer doen?
+Ik ga volgende keer weer een test afleggen met Darice. Hierin ga ik mijn experience modus testen. En dan krijg ik te horen of dit een goed idee is of niet.
 
 
 
