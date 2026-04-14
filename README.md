@@ -297,6 +297,21 @@ Ik heb vandaag een beetje geleerd hoe ik als het ware verschillende modusen kan 
 Ik ga volgende keer weer een test afleggen met Darice. Hierin ga ik mijn experience modus testen. En dan krijg ik te horen of dit een goed idee is of niet.
 
 
+# Derde test (14-04)
+Voor aanvang van de test heb ik mijn experience meter gemaakt en volledig werkend gekregen.
 
+## Notes:
+Ik heb deze test eigenlijk alleen maar de experience meter getest met Darice, en daar kwam uit dat Darice eigenlijk ook wel heel graag wilt dat er bij de volle experience mode ook iets gebeurt met het scherm zelf, zoals een kleine zoom of shake. Dit ga ik voor de volgende keer dan ook aanpassen.
 
+## Vijfde checkout (14-04)
+### Wat heb ik vandaag gedaan?
+Ik heb vandaag alleen de test met Darice afgelegd, omdat ik vandaag en morgen aanwezig ben bij de Smashing Conference!
 
+### Hoe lang duurde het?
+Mijn eigen test heeft een enkele aantal minuten geduurd. 
+
+### Wat heb ik geleerd?
+Ik heb nu een beter beeld bij wat de gebruiker zou willen en hier ga ik op reageren.
+
+### Wat ga ik de volgende keer doen?
+Volgende keer ga ik voor de experience modus ook aanpassingen doen door animaties van het beeld zelf te maken.
