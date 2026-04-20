@@ -315,3 +315,39 @@ Ik heb nu een beter beeld bij wat de gebruiker zou willen en hier ga ik op reage
 
 ### Wat ga ik de volgende keer doen?
 Volgende keer ga ik voor de experience modus ook aanpassingen doen door animaties van het beeld zelf te maken.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Zesde checkout (20-04)
+### Wat heb ik vandaag gedaan?
+We begonnen de dag vandaag met een kleine presentatie van Vasilis over de exclusive design principles
+
+Na deze presentatie begon ik aan mijn eigen project.
+
+Ik heb voor mijn nieuwe iteratie aan de zijkant twee balken toegevoegd die zorgen voor net wat extra gevoel bij de video. Hierdoor wordt je echt meegenomen in de video. Het zijn verschillende kleuren die allemaal een eigen gevoel meegeven.
+
+Na het zien van de balken heb ik toch besloten om ook balken aan de onderkant en de bovenkant toe te voegen om zo een toch net wat meer opvallende rand te laten zien, die nogsteeds niet echt wegneemt van wat er op het scherm gebeurt. 
+
+Er zijn dus verschillende kleuren voor verschillende gebeurtenissen. Deze kleuren heb ik nu even zelf bedacht, maar dit zou ik na de laatste test natuurlijk nog aan kunnen passen, als Darice andere kleuren in gedachte heeft.
+
+Daarna heb ik nog even gekeken naar hoe ik mijn code op de meeste nette en logische manier kon ordenen, waarna ik dit volledig heb gerefactored.
+
+### Hoe lang duurde het?
+Ik heb vandaag zo'n 4,5 uurtjes echt aan mijn project gezeten. 
+
+### Wat heb ik geleerd?
+Ik heb vandaag niet zo zeer wat geleerd, maar wel voor het eerst balken met verschillende kleuren toegevoegd. 
+
+### Wat ga ik de volgende keer doen?
+Volgende keer ga ik weer testen met Darice, dit is dan ook de laatste test. Na deze test ga ik dan nog de laatste paar aanpassingen maken aan mijn prototype naar aanleiding van de feedback die ik dan ontvang. 
