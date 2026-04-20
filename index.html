@@ -1,18 +1,17 @@
 <!doctype html>
-<html lang="en">
+<html lang="nl">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Darice Movie Experience</title>
     <link rel="stylesheet" href="styles/style.css" />
-    <title>Hoor het beeld</title>
   </head>
   <body>
     <main class="page">
-      <h1>Movie Experience Player</h1>
-      <p>
-        Standaard modus toont rustige captions. Met de slider kun je de
-        experience-modus versterken voor meer sfeer, emotie en visuele
-        geluidsondersteuning.
+      <h1>Darice Movie Experience</h1>
+      <p class="intro">
+        Standaardmodus toont rustige ondertiteling. Met de experience-slider
+        worden tekst en beeld steeds expressiever.
       </p>
 
       <div class="player" id="player">
@@ -21,10 +20,15 @@
           Je browser ondersteunt deze video niet.
         </video>
 
+        <div id="sideAccentLeft" class="side-accent left"></div>
+        <div id="sideAccentTop" class="side-accent top"></div>
+        <div id="sideAccentRight" class="side-accent right"></div>
+        <div id="sideAccentBottom" class="side-accent bottom"></div>
+
         <div id="subtitle" class="subtitle"></div>
       </div>
 
-      <div class="controls-panel">
+      <section class="controls-panel">
         <div class="top-controls">
           <button id="decreaseFont" type="button">A-</button>
           <button id="increaseFont" type="button">A+</button>
@@ -52,8 +56,9 @@
             >Tekstgrootte: <strong id="fontSizeStatus">24px</strong></span
           >
         </div>
-      </div>
+      </section>
     </main>
+
     <script src="script.js"></script>
   </body>
 </html>

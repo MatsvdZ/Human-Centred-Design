@@ -1,3 +1,7 @@
+/**********************/
+/* MARK: DOM ELEMENTS */
+/**********************/
+
 const video = document.getElementById("video");
 const player = document.getElementById("player");
 const subtitle = document.getElementById("subtitle");
@@ -11,9 +15,41 @@ const experienceLabel = document.getElementById("experienceLabel");
 const modeStatus = document.getElementById("modeStatus");
 const fontSizeStatus = document.getElementById("fontSizeStatus");
 
-const modeLabels = ["Standaard", "Subtiel", "Verrijkt", "Volledig"];
-let experienceLevel = 0;
-let fontSize = 24;
+/****************/
+/* MARK: CONFIG */
+/****************/
+
+const MODE_LABELS = ["Standaard", "Subtiel", "Verrijkt", "Volledig"];
+
+const PERSISTENT_VISUAL_CLASSES = [
+  "accent-music",
+  "accent-tense",
+  "accent-sound",
+  "accent-awkward",
+  "accent-focus",
+  "video-jump",
+];
+
+const TEMPORARY_VISUAL_CLASSES = ["shake-video"];
+
+const FONT_SIZE_MIN = 14;
+const FONT_SIZE_MAX = 60;
+const FONT_SIZE_STEP = 2;
+const TEMP_EFFECT_DURATION = 250;
+
+/***************/
+/* MARK: STATE */
+/***************/
+
+const state = {
+  experienceLevel: 0,
+  fontSize: 24,
+  currentVisualKey: "",
+};
+
+/************************/
+/* MARK: SUBTITLES TEXT */
+/************************/
 
 const subtitles = [
   {
@@ -22,6 +58,7 @@ const subtitles = [
     textStandard: "[Intro music plays]",
     textExperience: "[Intro music plays softly in the background]",
     type: "music pulse",
+    visual: "accent-music",
   },
   {
     start: 3,
@@ -29,6 +66,7 @@ const subtitles = [
     textStandard: "[Power switches off]",
     textExperience: "[Power suddenly switches off]",
     type: "sound shake-soft",
+    visual: "accent-tense shake-video",
   },
   {
     start: 4,
@@ -36,6 +74,7 @@ const subtitles = [
     textStandard: "Dwight: Uh-oh, okay, okay, nobody panic!",
     textExperience: "Dwight (panicked, loud): Uh-oh, okay, okay, nobody panic!",
     type: "dialogue loud shake-soft",
+    visual: "accent-tense",
   },
   {
     start: 5.5,
@@ -43,6 +82,7 @@ const subtitles = [
     textStandard: "Listen up, listen up!",
     textExperience: "Dwight (urgent): Listen up, listen up!",
     type: "dialogue shake-soft",
+    visual: "accent-focus",
   },
   {
     start: 8,
@@ -50,6 +90,7 @@ const subtitles = [
     textStandard: "[Flashlight clicks on]",
     textExperience: "[A flashlight clicks on in the dark]",
     type: "sound focus-in",
+    visual: "accent-sound",
   },
   {
     start: 9,
@@ -57,6 +98,7 @@ const subtitles = [
     textStandard: "Everyone, follow me to the shelter.",
     textExperience: "Dwight (commanding): Everyone, follow me to the shelter.",
     type: "dialogue shake-soft",
+    visual: "accent-focus",
   },
   {
     start: 11,
@@ -65,6 +107,7 @@ const subtitles = [
     textExperience:
       "Dwight (serious, awkward): We've got enough food for 14 days.",
     type: "dialogue awkward",
+    visual: "accent-awkward",
   },
   {
     start: 13,
@@ -73,6 +116,7 @@ const subtitles = [
     textExperience:
       "Dwight (awkward): After that, we have a difficult conversation.",
     type: "dialogue awkward",
+    visual: "accent-awkward",
   },
   {
     start: 16,
@@ -81,6 +125,7 @@ const subtitles = [
     textExperience:
       "Michael (casual): My bad. Space heater and fan were both on high,",
     type: "dialogue fade-slide",
+    visual: "",
   },
   {
     start: 19,
@@ -88,6 +133,7 @@ const subtitles = [
     textStandard: "plugged into the same outlet, so...",
     textExperience: "Michael: plugged into the same outlet, so...",
     type: "dialogue fade-slide",
+    visual: "",
   },
   {
     start: 21,
@@ -95,6 +141,7 @@ const subtitles = [
     textStandard: "Jim: It's saying the server went down?",
     textExperience: "Jim (confused): Uhhh, it's saying the server went down?",
     type: "dialogue focus-in",
+    visual: "accent-focus",
   },
   {
     start: 24,
@@ -102,6 +149,7 @@ const subtitles = [
     textStandard: "Does anybody know that password?",
     textExperience: "Jim: Does anybody know that password?",
     type: "dialogue focus-in",
+    visual: "accent-focus",
   },
   {
     start: 26,
@@ -109,6 +157,7 @@ const subtitles = [
     textStandard: "Because otherwise we can't do any work.",
     textExperience: "Jim: Because otherwise we can't do any work.",
     type: "dialogue fade-slide",
+    visual: "",
   },
   {
     start: 27,
@@ -116,6 +165,7 @@ const subtitles = [
     textStandard: "Michael: Try 'password'.",
     textExperience: "Michael (guessing): Uhhh, try 'password'.",
     type: "dialogue awkward",
+    visual: "accent-awkward",
   },
   {
     start: 29,
@@ -123,6 +173,7 @@ const subtitles = [
     textStandard: "[Typing sounds]",
     textExperience: "[Quick typing sounds]",
     type: "sound fade-slide",
+    visual: "",
   },
   {
     start: 30,
@@ -130,6 +181,7 @@ const subtitles = [
     textStandard: "Jim: Nope.",
     textExperience: "Jim: Nope.",
     type: "dialogue fade-slide",
+    visual: "",
   },
   {
     start: 30.6,
@@ -138,6 +190,7 @@ const subtitles = [
     textExperience:
       "Dwight (thinking aloud): Try zero, zero, zero... zero, zero, zero.",
     type: "dialogue awkward",
+    visual: "accent-awkward",
   },
   {
     start: 34,
@@ -145,6 +198,7 @@ const subtitles = [
     textStandard: "[Typing sounds]",
     textExperience: "[More typing sounds]",
     type: "sound fade-slide",
+    visual: "",
   },
   {
     start: 35,
@@ -152,6 +206,7 @@ const subtitles = [
     textStandard: "Jim: No.",
     textExperience: "Jim: No.",
     type: "dialogue fade-slide",
+    visual: "",
   },
   {
     start: 35.5,
@@ -160,6 +215,7 @@ const subtitles = [
     textExperience:
       "Dwight: Okay, now try zero, zero, zero... zero, zero, one.",
     type: "dialogue awkward",
+    visual: "accent-awkward",
   },
   {
     start: 39.5,
@@ -167,6 +223,7 @@ const subtitles = [
     textStandard: "Jim: Okay, I'm not doing every number.",
     textExperience: "Jim (annoyed): Okay, I'm not doing every number.",
     type: "dialogue focus-in",
+    visual: "accent-focus",
   },
   {
     start: 41.5,
@@ -174,6 +231,7 @@ const subtitles = [
     textStandard: "Pam: Wait, does anyone remember when it was set up?",
     textExperience: "Pam: Wait, um, does anyone remember when it was set up?",
     type: "dialogue fade-slide",
+    visual: "",
   },
   {
     start: 44,
@@ -181,6 +239,7 @@ const subtitles = [
     textStandard: "Michael: It was like eight years ago.",
     textExperience: "Michael: Uh, it was like eight years ago.",
     type: "dialogue fade-slide",
+    visual: "",
   },
   {
     start: 46.5,
@@ -188,6 +247,7 @@ const subtitles = [
     textStandard: "Pam: Lord of the Rings stuff?",
     textExperience: "Pam (questioning): Lord of the Rings... stuff?",
     type: "dialogue awkward",
+    visual: "accent-awkward",
   },
   {
     start: 48.5,
@@ -195,6 +255,7 @@ const subtitles = [
     textStandard: "Pam: I don't know.",
     textExperience: "Pam: I don't know.",
     type: "dialogue fade-slide",
+    visual: "",
   },
   {
     start: 49,
@@ -203,6 +264,7 @@ const subtitles = [
     textExperience:
       "Pam: I'm just trying to think of things that were happening at the time.",
     type: "dialogue fade-slide",
+    visual: "",
   },
   {
     start: 51.5,
@@ -210,6 +272,7 @@ const subtitles = [
     textStandard: "Erin: Everyone was getting their driver's license.",
     textExperience: "Erin: Um, everyone was getting their driver's license.",
     type: "dialogue fade-slide",
+    visual: "",
   },
   {
     start: 54,
@@ -217,6 +280,7 @@ const subtitles = [
     textStandard: "Jim: Why don't we just call the IT guy?",
     textExperience: "Jim: Why don't we just call the IT guy who set it up?",
     type: "dialogue focus-in",
+    visual: "accent-focus",
   },
   {
     start: 56.5,
@@ -224,6 +288,7 @@ const subtitles = [
     textStandard: "What's the name of the guy in the glasses again?",
     textExperience: "Jim: What's the name of the guy in the glasses again?",
     type: "dialogue fade-slide",
+    visual: "",
   },
   {
     start: 58,
@@ -231,6 +296,7 @@ const subtitles = [
     textStandard: "Michael: Okay, moving backwards, our IT guys have been...",
     textExperience: "Michael: Okay, moving backwards, our IT guys have been...",
     type: "dialogue awkward",
+    visual: "accent-awkward",
   },
   {
     start: 61,
@@ -239,6 +305,7 @@ const subtitles = [
     textExperience:
       "Michael (listing): Glasses, turban, ear hair, fatty three, shorts, fatty two,",
     type: "dialogue awkward",
+    visual: "accent-awkward",
   },
   {
     start: 65.5,
@@ -246,6 +313,7 @@ const subtitles = [
     textStandard: "lozenge, and fatso.",
     textExperience: "Michael: lozenge, and fatso.",
     type: "dialogue awkward",
+    visual: "accent-awkward",
   },
   {
     start: 67.5,
@@ -253,6 +321,7 @@ const subtitles = [
     textStandard: "I think lozenge is the one who installed it.",
     textExperience: "Jim: I think lozenge is the one who installed it.",
     type: "dialogue focus-in",
+    visual: "accent-focus",
   },
   {
     start: 70,
@@ -260,6 +329,7 @@ const subtitles = [
     textStandard: "Andy: I got it. Try, um...",
     textExperience: "Andy: I got it. Try, um...",
     type: "dialogue focus-in",
+    visual: "accent-focus",
   },
   {
     start: 71.5,
@@ -267,6 +337,7 @@ const subtitles = [
     textStandard: "[Fake coughing]",
     textExperience: "[Fake coughing to hint at a word]",
     type: "sound awkward",
+    visual: "accent-awkward",
   },
   {
     start: 74.5,
@@ -274,6 +345,7 @@ const subtitles = [
     textStandard: "Michael: It made me laugh when I heard it,",
     textExperience: "Michael: You know what? It made me laugh when I heard it,",
     type: "dialogue awkward",
+    visual: "accent-awkward",
   },
   {
     start: 77,
@@ -281,6 +353,7 @@ const subtitles = [
     textStandard: "but Pam got really offended.",
     textExperience: "Michael: but Pam got really offended.",
     type: "dialogue awkward",
+    visual: "accent-awkward",
   },
   {
     start: 79,
@@ -288,6 +361,7 @@ const subtitles = [
     textStandard: "Kevin: Big boobs.",
     textExperience: "Kevin (matter-of-fact): Big boobs.",
     type: "dialogue awkward focus-in",
+    visual: "accent-focus accent-awkward",
   },
   {
     start: 81.5,
@@ -295,6 +369,7 @@ const subtitles = [
     textStandard: "Meredith: Drama queen?",
     textExperience: "Meredith (confused): Drama queen?",
     type: "dialogue awkward",
+    visual: "accent-awkward",
   },
   {
     start: 82.3,
@@ -302,6 +377,7 @@ const subtitles = [
     textStandard: "Angela: Nosey?",
     textExperience: "Angela (guessing): Nosey?",
     type: "dialogue awkward",
+    visual: "accent-awkward",
   },
   {
     start: 84,
@@ -309,6 +385,7 @@ const subtitles = [
     textStandard: "Pam: You're typing big boobs?",
     textExperience: "Pam (disbelieving): You're typing big boobs?",
     type: "dialogue focus-in",
+    visual: "accent-focus",
   },
   {
     start: 85.5,
@@ -316,6 +393,7 @@ const subtitles = [
     textStandard: "Jim: I'm trying everything.",
     textExperience: "Jim: I'm trying everything.",
     type: "dialogue fade-slide",
+    visual: "",
   },
   {
     start: 86.5,
@@ -323,6 +401,7 @@ const subtitles = [
     textStandard: "Dwight: Try big boobs with a Z.",
     textExperience: "Dwight: Try big boobs with a Z.",
     type: "dialogue awkward",
+    visual: "accent-awkward",
   },
   {
     start: 88,
@@ -330,6 +409,7 @@ const subtitles = [
     textStandard: "Jim: That's the password. We're in.",
     textExperience: "Jim (surprised): That's... the password. We're in.",
     type: "dialogue focus-in",
+    visual: "accent-focus",
   },
   {
     start: 91,
@@ -337,6 +417,7 @@ const subtitles = [
     textStandard: "All: All right!",
     textExperience: "All (relieved): All right!",
     type: "dialogue pulse",
+    visual: "accent-music video-jump",
   },
   {
     start: 92,
@@ -344,6 +425,7 @@ const subtitles = [
     textStandard: "All: Wow. Yes.",
     textExperience: "All (excited): Wow. Yes.",
     type: "dialogue pulse",
+    visual: "accent-music video-jump",
   },
   {
     start: 92.7,
@@ -353,6 +435,7 @@ const subtitles = [
     textExperience:
       "Michael (self-satisfied): The important thing is, this kept us secure, people.",
     type: "dialogue awkward",
+    visual: "accent-awkward",
   },
   {
     start: 99,
@@ -360,114 +443,283 @@ const subtitles = [
     textStandard: "[The Office theme playing]",
     textExperience: "[The Office theme plays brightly]",
     type: "music pulse",
+    visual: "accent-music",
   },
 ];
 
+/*****************/
+/* MARK: STORAGE */
+/*****************/
+
+function savePreferences() {
+  localStorage.setItem("subtitleFontSize", String(state.fontSize));
+  localStorage.setItem("experienceLevel", String(state.experienceLevel));
+}
+
+function loadPreferences() {
+  const savedFontSize = localStorage.getItem("subtitleFontSize");
+  const savedExperience = localStorage.getItem("experienceLevel");
+
+  if (savedFontSize) {
+    state.fontSize = Number(savedFontSize);
+  }
+
+  if (savedExperience !== null) {
+    state.experienceLevel = Number(savedExperience);
+  }
+}
+
+/*****************************/
+/* MARK: MODE / TEXT HELPERS */
+/*****************************/
+
+function getModeLabel(level) {
+  return MODE_LABELS[level] || MODE_LABELS[0];
+}
+
+function getModeClass() {
+  switch (state.experienceLevel) {
+    case 0:
+      return "mode-standard";
+    case 1:
+      return "mode-exp-1";
+    case 2:
+      return "mode-exp-2";
+    case 3:
+      return "mode-exp-3";
+    default:
+      return "mode-standard";
+  }
+}
+
+function getSubtitleText(subtitleItem) {
+  if (state.experienceLevel === 0) {
+    return subtitleItem.textStandard || subtitleItem.textExperience || "";
+  }
+
+  return subtitleItem.textExperience || subtitleItem.textStandard || "";
+}
+
+function getCurrentSubtitle(currentTime) {
+  return subtitles.find(
+    (item) => currentTime >= item.start && currentTime < item.end,
+  );
+}
+
+/********************/
+/* MARK: UI HELPERS */
+/********************/
+
 function updateModeUI() {
-  const label = modeLabels[experienceLevel];
+  const label = getModeLabel(state.experienceLevel);
+
+  experienceRange.value = String(state.experienceLevel);
   experienceLabel.textContent = label;
   modeStatus.textContent = label;
 }
 
-function applyFontSize() {
-  subtitle.style.fontSize = fontSize + "px";
-  fontSizeStatus.textContent = fontSize + "px";
-  localStorage.setItem("subtitleFontSize", String(fontSize));
+function updateFontUI() {
+  subtitle.style.fontSize = `${state.fontSize}px`;
+  fontSizeStatus.textContent = `${state.fontSize}px`;
 }
 
-function getSubtitleText(current) {
-  if (experienceLevel === 0) {
-    return current.textStandard || current.textExperience || current.text;
+function updateFullscreenButton() {
+  fullscreenBtn.textContent = document.fullscreenElement
+    ? "Exit fullscreen"
+    : "Fullscreen";
+}
+
+/************************/
+/* MARK: VISUAL EFFECTS */
+/************************/
+
+function clearPersistentVisualEffects() {
+  player.classList.remove(...PERSISTENT_VISUAL_CLASSES);
+}
+
+function triggerTemporaryEffect(className, duration = TEMP_EFFECT_DURATION) {
+  player.classList.remove(className);
+  void player.offsetWidth;
+  player.classList.add(className);
+
+  setTimeout(() => {
+    player.classList.remove(className);
+  }, duration);
+}
+
+function shouldApplyPersistentClass(className) {
+  if (state.experienceLevel === 0) return false;
+
+  if (state.experienceLevel === 1) {
+    return (
+      className === "accent-music" ||
+      className === "accent-focus" ||
+      className === "accent-awkward"
+    );
   }
-  return current.textExperience || current.textStandard || current.text;
+
+  if (state.experienceLevel === 2) {
+    return true;
+  }
+
+  if (state.experienceLevel === 3) {
+    return true;
+  }
+
+  return false;
 }
 
-function getModeClass() {
-  if (experienceLevel === 0) return "mode-standard";
-  if (experienceLevel === 1) return "mode-exp-1";
-  if (experienceLevel === 2) return "mode-exp-2";
-  return "mode-exp-3";
+function shouldApplyTemporaryClass() {
+  return state.experienceLevel >= 2;
+}
+
+function applyVisualEffects(subtitleItem) {
+  clearPersistentVisualEffects();
+
+  if (!subtitleItem || !subtitleItem.visual || state.experienceLevel === 0) {
+    return;
+  }
+
+  const visualClasses = subtitleItem.visual.split(" ").filter(Boolean);
+
+  visualClasses.forEach((className) => {
+    if (TEMPORARY_VISUAL_CLASSES.includes(className)) {
+      if (shouldApplyTemporaryClass()) {
+        triggerTemporaryEffect(className);
+      }
+      return;
+    }
+
+    if (shouldApplyPersistentClass(className)) {
+      player.classList.add(className);
+    }
+  });
+}
+
+/****************************/
+/* MARK: SUBTITLE RENDERING */
+/****************************/
+
+function resetSubtitle() {
+  subtitle.textContent = "";
+  subtitle.className = "subtitle";
 }
 
 function renderSubtitle() {
   const currentTime = video.currentTime;
-  const current = subtitles.find(
-    (sub) => currentTime >= sub.start && currentTime < sub.end,
-  );
+  const currentSubtitle = getCurrentSubtitle(currentTime);
 
-  if (!current) {
-    subtitle.textContent = "";
-    subtitle.className = "subtitle";
+  if (!currentSubtitle) {
+    resetSubtitle();
+    clearPersistentVisualEffects();
+    state.currentVisualKey = "";
     return;
   }
 
-  subtitle.textContent = getSubtitleText(current);
+  subtitle.textContent = getSubtitleText(currentSubtitle);
 
   const classes = ["subtitle", getModeClass()];
-  if (current.type) {
-    classes.push(...current.type.split(" "));
+
+  if (currentSubtitle.type) {
+    classes.push(...currentSubtitle.type.split(" "));
   }
 
   subtitle.className = classes.join(" ");
-  subtitle.style.fontSize = fontSize + "px";
+  subtitle.style.fontSize = `${state.fontSize}px`;
+
+  const visualKey = `${currentSubtitle.start}-${currentSubtitle.end}-${state.experienceLevel}`;
+
+  if (visualKey !== state.currentVisualKey) {
+    applyVisualEffects(currentSubtitle);
+    state.currentVisualKey = visualKey;
+  }
 }
 
-video.addEventListener("timeupdate", renderSubtitle);
-video.addEventListener("seeked", renderSubtitle);
-video.addEventListener("play", renderSubtitle);
+/**************************/
+/* MARK: SETTINGS ACTIONS */
+/**************************/
 
-experienceRange.addEventListener("input", () => {
-  experienceLevel = Number(experienceRange.value);
-  localStorage.setItem("experienceLevel", String(experienceLevel));
+function increaseFontSize() {
+  if (state.fontSize < FONT_SIZE_MAX) {
+    state.fontSize += FONT_SIZE_STEP;
+    updateFontUI();
+    savePreferences();
+  }
+}
+
+function decreaseFontSize() {
+  if (state.fontSize > FONT_SIZE_MIN) {
+    state.fontSize -= FONT_SIZE_STEP;
+    updateFontUI();
+    savePreferences();
+  }
+}
+
+function setExperienceLevel(level) {
+  state.experienceLevel = Number(level);
+  state.currentVisualKey = "";
+
   updateModeUI();
+  savePreferences();
   renderSubtitle();
-});
+}
 
-increaseFontBtn.addEventListener("click", () => {
-  if (fontSize < 60) {
-    fontSize += 2;
-    applyFontSize();
-  }
-});
-
-decreaseFontBtn.addEventListener("click", () => {
-  if (fontSize > 14) {
-    fontSize -= 2;
-    applyFontSize();
-  }
-});
-
-fullscreenBtn.addEventListener("click", () => {
+function toggleFullscreen() {
   if (!document.fullscreenElement) {
-    if (player.requestFullscreen) {
-      player.requestFullscreen();
-    }
+    player.requestFullscreen();
   } else {
-    if (document.exitFullscreen) {
-      document.exitFullscreen();
-    }
+    document.exitFullscreen();
   }
-});
-
-document.addEventListener("fullscreenchange", () => {
-  fullscreenBtn.textContent = document.fullscreenElement
-    ? "Exit fullscreen"
-    : "Fullscreen";
-});
-
-// Restore saved preferences
-const savedFontSize = localStorage.getItem("subtitleFontSize");
-const savedExperience = localStorage.getItem("experienceLevel");
-
-if (savedFontSize) {
-  fontSize = Number(savedFontSize);
 }
 
-if (savedExperience !== null) {
-  experienceLevel = Number(savedExperience);
-  experienceRange.value = String(experienceLevel);
+/*************************/
+/* MARK: EVENT LISTENERS */
+/*************************/
+
+function bindVideoEvents() {
+  video.addEventListener("timeupdate", renderSubtitle);
+
+  video.addEventListener("seeked", () => {
+    state.currentVisualKey = "";
+    renderSubtitle();
+  });
+
+  video.addEventListener("play", () => {
+    state.currentVisualKey = "";
+    renderSubtitle();
+  });
+
+  video.addEventListener("pause", renderSubtitle);
 }
 
-updateModeUI();
-applyFontSize();
-renderSubtitle();
+function bindControlEvents() {
+  increaseFontBtn.addEventListener("click", increaseFontSize);
+  decreaseFontBtn.addEventListener("click", decreaseFontSize);
+
+  experienceRange.addEventListener("input", (event) => {
+    setExperienceLevel(event.target.value);
+  });
+
+  fullscreenBtn.addEventListener("click", toggleFullscreen);
+
+  document.addEventListener("fullscreenchange", updateFullscreenButton);
+}
+
+/**************/
+/* MARK: INIT */
+/**************/
+
+function init() {
+  loadPreferences();
+
+  updateModeUI();
+  updateFontUI();
+  updateFullscreenButton();
+
+  bindVideoEvents();
+  bindControlEvents();
+
+  renderSubtitle();
+}
+
+init();
