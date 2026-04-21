@@ -317,18 +317,6 @@ Ik heb nu een beter beeld bij wat de gebruiker zou willen en hier ga ik op reage
 Volgende keer ga ik voor de experience modus ook aanpassingen doen door animaties van het beeld zelf te maken.
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 ## Zesde checkout (20-04)
 ### Wat heb ik vandaag gedaan?
 We begonnen de dag vandaag met een kleine presentatie van Vasilis over de exclusive design principles
@@ -351,3 +339,27 @@ Ik heb vandaag niet zo zeer wat geleerd, maar wel voor het eerst balken met vers
 
 ### Wat ga ik de volgende keer doen?
 Volgende keer ga ik weer testen met Darice, dit is dan ook de laatste test. Na deze test ga ik dan nog de laatste paar aanpassingen maken aan mijn prototype naar aanleiding van de feedback die ik dan ontvang. 
+
+
+# Vierde test (21-04) Laatste test
+Tijdens deze laatste test heb ik mijn nieuwste versie getoond met de experience modus met de balken eromheen. 
+
+## Notes:
+- Misschien toch nog iets van een intro scherm maken?
+- Darice positief over de experience meter!
+
+
+## Zevende checkout (21-04)
+### Wat heb ik vandaag gedaan?
+Vandaag was de laatste test met Darice. Hierin heb ik mijn nieuwste versie laten zien met de werkende experience modus die ik heb gemaakt. Tijdens het testen reageerde Darice eigenlijk bijzonder ebthousiast. Ze vond dat de border niet storend was en dat dit goed bij de video van 'The Office' past. Ze vindt dat het dus echt een toegevoegde waarde heeft, en dat is natuurlijk top om te horen!
+
+Het enige wat ik nog zou kunnen doen is om eventueel iets van een beginscherm te maken dat laat zien wat je gaat kijken en waar dit over gaat.
+
+### Hoe lang duurde het?
+Het testen zelf duurde in totaal voor mij zo rond de 5 minuten, omdat ik natuurlijk alleen echt mijn nieuwe dingen heb laten zien.
+
+### Wat heb ik geleerd?
+Ik heb vandaag niet zo zeer echt iets nieuws geleerd.
+
+### Wat ga ik de volgende keer doen?
+Ik wil dus eventueel nog een intro scherm maken, en verder weet ik niet echt meer wat ik nog moet toevoegen.
