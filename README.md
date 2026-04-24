@@ -363,3 +363,13 @@ Ik heb vandaag niet zo zeer echt iets nieuws geleerd.
 
 ### Wat ga ik de volgende keer doen?
 Ik wil dus eventueel nog een intro scherm maken, en verder weet ik niet echt meer wat ik nog moet toevoegen.
+
+
+# Feedback gesprek (24-04)
+Ik heb vandaag weer een klein feedback gesprek gehad, en daar kwam de volgende feedback uit:
+
+- Bij de volledig modus de hele background van kleur veranderen en dus over de top gaan
+- Slider wat logischer maken. Dus van uit naar volledig ipv Weergave modus naar volledig
+- Verder eventueel een wat mooiere interface
+
+Dit zijn een aantal mooie punten waar ik de laatste paar dagen nog aan kan werken om dit vak af te maken, dat is dan ook precies waar ik na de vakantie mee verder ga. 
