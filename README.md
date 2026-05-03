@@ -369,7 +369,14 @@ Ik wil dus eventueel nog een intro scherm maken, en verder weet ik niet echt mee
 Ik heb vandaag weer een klein feedback gesprek gehad, en daar kwam de volgende feedback uit:
 
 - Bij de volledig modus de hele background van kleur veranderen en dus over de top gaan
-- Slider wat logischer maken. Dus van uit naar volledig ipv Weergave modus naar volledig
+- Slider wat logischer maken. Dus van 'uit' naar 'volledig' ipv 'Weergave modus' naar 'volledig'
 - Verder eventueel een wat mooiere interface
 
 Dit zijn een aantal mooie punten waar ik de laatste paar dagen nog aan kan werken om dit vak af te maken, dat is dan ook precies waar ik na de vakantie mee verder ga. 
+
+## Puntjes op de i
+In de laatste dag heb ik gewerkt aan de feedback die ik nog heb gekregen van Vasilis. Voor de experienve mode heb ik de achtergrond dynamisch gemaakt en deze gekoppeld aan de sidebar accenten van de video. Dus wanneer er muziek is, of een geluidseffect, dan verandert de achtergrondkleur relatief subtiel mee met de kleuren van de sidebar accenten.
+
+Er wordt tijdens het afspelen op basis van de huidige ondertiteling een class op de body gezet. Dit wordt gecombineerd met de huidige experience modus om de juiste achtergrond kleur te krijgen.
+
+Dit maakt de 'volledig' modus dus net weer dat stapje extra zodat het visueel nog sterker is.
