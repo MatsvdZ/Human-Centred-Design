@@ -2,14 +2,17 @@
 /* MARK: DOM ELEMENTS */
 /**********************/
 
+// belangrijke elementen voor video, ondertitels, en controls
 const video = document.getElementById("video");
 const player = document.getElementById("player");
 const subtitle = document.getElementById("subtitle");
 
+// control elementen
 const decreaseFontBtn = document.getElementById("decreaseFont");
 const increaseFontBtn = document.getElementById("increaseFont");
 const fullscreenBtn = document.getElementById("fullscreenBtn");
 
+// experience level controls
 const experienceRange = document.getElementById("experienceRange");
 const experienceLabel = document.getElementById("experienceLabel");
 const fontSizeStatus = document.getElementById("fontSizeStatus");
@@ -18,8 +21,10 @@ const fontSizeStatus = document.getElementById("fontSizeStatus");
 /* MARK: CONFIG */
 /****************/
 
+// labels voor de experience levels
 const MODE_LABELS = ["Uit", "Subtiel", "Verrijkt", "Volledig"];
 
+// Classes die actief blijven gedurende de hele duur van een subtitle
 const PERSISTENT_VISUAL_CLASSES = [
   "accent-music",
   "accent-tense",
@@ -29,8 +34,10 @@ const PERSISTENT_VISUAL_CLASSES = [
   "video-jump",
 ];
 
+// Classes die tijdelijk worden toegepast voor een kort schokeffect
 const TEMPORARY_VISUAL_CLASSES = ["shake-video"];
 
+// Font size instellingen
 const FONT_SIZE_MIN = 14;
 const FONT_SIZE_MAX = 60;
 const FONT_SIZE_STEP = 2;
@@ -40,16 +47,20 @@ const TEMP_EFFECT_DURATION = 250;
 /* MARK: STATE */
 /***************/
 
+// centrale state van de applicatie
 const state = {
-  experienceLevel: 0,
-  fontSize: 24,
-  currentVisualKey: "",
+  experienceLevel: 0, // 0 = Uit, 1 = Subtiel, 2 = Verrijkt, 3 = Volledig
+  fontSize: 24, // standaard font size, kan aangepast worden door de gebruiker
+  currentVisualKey: "", // om bij te houden welke visual al actief is
 };
 
 /************************/
 /* MARK: SUBTITLES TEXT */
 /************************/
 
+// uitgebreide ondertiteldata met tijdstippen, tekst voor
+// standaard en verrijkte modus, type voor styling, 
+// en visuele accenten
 const subtitles = [
   {
     start: 0,
@@ -450,11 +461,15 @@ const subtitles = [
 /* MARK: STORAGE */
 /*****************/
 
+// functies om voorkeuren op te slaan
+// BRON: https://developer.mozilla.org/en-US/docs/Web/API/Storage/setItem
 function savePreferences() {
   localStorage.setItem("subtitleFontSize", String(state.fontSize));
   localStorage.setItem("experienceLevel", String(state.experienceLevel));
 }
 
+// Laadt voorkeuren van de gebruiker uit localStorage en past deze toe op de state
+// BRON: https://developer.mozilla.org/en-US/docs/Web/API/Storage/getItem
 function loadPreferences() {
   const savedFontSize = localStorage.getItem("subtitleFontSize");
   const savedExperience = localStorage.getItem("experienceLevel");
@@ -472,10 +487,12 @@ function loadPreferences() {
 /* MARK: MODE / TEXT HELPERS */
 /*****************************/
 
+// Juiste label voor het huidige experience level
 function getModeLabel(level) {
   return MODE_LABELS[level] || MODE_LABELS[0];
 }
 
+// Juiste CSS class voor het huidige experience level, gebruikt voor styling
 function getModeClass() {
   switch (state.experienceLevel) {
     case 0:
@@ -491,14 +508,22 @@ function getModeClass() {
   }
 }
 
+// Bepaalt welke tekst getoond moet worden voor een subtitle item, afhankelijk van het experience level
 function getSubtitleText(subtitleItem) {
+
+  // standaard modus heeft voorrang op verrijkt, 
+  // zodat als er geen specifieke tekst is voor de verrijkte modus,
+  // de standaard tekst wordt getoond
   if (state.experienceLevel === 0) {
     return subtitleItem.textStandard || subtitleItem.textExperience || "";
   }
 
+  // voor verrijkt en volledig, probeer eerst de verrijkte tekst,
+  // en val terug op de standaard tekst als er geen verrijkte tekst is
   return subtitleItem.textExperience || subtitleItem.textStandard || "";
 }
 
+// Bepaalt welk subtitle item momenteel actief is op basis van de huidige tijd van de video
 function getCurrentSubtitle(currentTime) {
   return subtitles.find(
     (item) => currentTime >= item.start && currentTime < item.end,
@@ -509,12 +534,15 @@ function getCurrentSubtitle(currentTime) {
 /* MARK: UI HELPERS */
 /********************/
 
+// Update de UI om het huidige experience level te tonen
 function updateModeUI() {
   const label = getModeLabel(state.experienceLevel);
 
+  // zorgt dat de slider en het label de huidige experience level tonen
   experienceRange.value = String(state.experienceLevel);
   experienceLabel.textContent = label;
 
+  // verwijder alle experience classes van de body, en voeg alleen de relevante toe
   document.body.classList.remove(
     "experience-off",
     "experience-subtle",
@@ -522,6 +550,7 @@ function updateModeUI() {
     "experience-full",
   );
 
+  // voeg de juiste class toe op basis van het experience level
   if (state.experienceLevel === 0) {
     document.body.classList.add("experience-off");
   } else if (state.experienceLevel === 1) {
@@ -533,11 +562,13 @@ function updateModeUI() {
   }
 }
 
+// Update de UI om het huidige font size te tonen en toe te passen op de ondertiteling
 function updateFontUI() {
   subtitle.style.fontSize = `${state.fontSize}px`;
   fontSizeStatus.textContent = `${state.fontSize}px`;
 }
 
+// Update de tekst van de fullscreen knop afhankelijk van of we in fullscreen modus zijn of niet
 function updateFullscreenButton() {
   fullscreenBtn.textContent = document.fullscreenElement
     ? "Exit fullscreen"
@@ -548,9 +579,12 @@ function updateFullscreenButton() {
 /* MARK: VISUAL EFFECTS */
 /************************/
 
+// Update de achtergrond van de pagina op basis van de visual classes van 
+// het huidige subtitle item
 function updateBackground(accentClass) {
   const body = document.body;
 
+  // verwijder alle mogelijke achtergrond classes
   body.classList.remove(
     "bg-music",
     "bg-tense",
@@ -559,10 +593,12 @@ function updateBackground(accentClass) {
     "bg-awkward",
   );
 
+  // om te voorkomen dat we te veel visuele effecten hebben in de subtiele modus
   if (state.experienceLevel < 2) return; // alleen vanaf 'verrijkt'
 
   if (!accentClass) return;
 
+  // controleer welke accent class aanwezig is en voeg de bijbehorende achtergrond class toe
   if (accentClass.includes("accent-music")) {
     body.classList.add("bg-music");
   } else if (accentClass.includes("accent-tense")) {
@@ -576,23 +612,33 @@ function updateBackground(accentClass) {
   }
 }
 
+// Verwijdert alle persistent visual effect classes van de player, om te resetten voordat we nieuwe effecten toepassen
 function clearPersistentVisualEffects() {
   player.classList.remove(...PERSISTENT_VISUAL_CLASSES);
 }
 
+// Toont een tijdelijk visueel effect door een class toe te voegen en deze na een korte tijd weer te verwijderen
 function triggerTemporaryEffect(className, duration = TEMP_EFFECT_DURATION) {
+
+  // om te zorgen dat het effect opnieuw getriggerd kan worden als dezelfde class al aanwezig is
   player.classList.remove(className);
+
+  // Forceer een reflow om animatie opnieuw te laten kunnen starten
   void player.offsetWidth;
   player.classList.add(className);
 
+  // Verwijder class nadat animatie klaar is
   setTimeout(() => {
     player.classList.remove(className);
   }, duration);
 }
 
 function shouldApplyPersistentClass(className) {
+  
+  // geen effecten in de 'uit' modus
   if (state.experienceLevel === 0) return false;
 
+  // subtiele modus alleen bepaalde effecten
   if (state.experienceLevel === 1) {
     return (
       className === "accent-music" ||
@@ -601,6 +647,7 @@ function shouldApplyPersistentClass(className) {
     );
   }
 
+  // verrijkt en volledig modus tonen alle effecten
   if (state.experienceLevel === 2) {
     return true;
   }
@@ -612,10 +659,12 @@ function shouldApplyPersistentClass(className) {
   return false;
 }
 
+// tijdelijke effecten alleen toepassen bij experience level 2 of hoger
 function shouldApplyTemporaryClass() {
   return state.experienceLevel >= 2;
 }
 
+// Pas visuele effecten toe op basis van de 'visual' property van het subtitle item
 function applyVisualEffects(subtitleItem) {
   clearPersistentVisualEffects();
 
@@ -624,12 +673,15 @@ function applyVisualEffects(subtitleItem) {
     return;
   }
 
+  // verdeel de visual string in losse classes, zodat er meerdere effecten toegepast kunnen worden
   const visualClasses = subtitleItem.visual.split(" ").filter(Boolean);
 
-  // 🔥 update background
+  // update background
   updateBackground(subtitleItem.visual);
 
   visualClasses.forEach((className) => {
+
+    // Trigger eenmalige effecten
     if (TEMPORARY_VISUAL_CLASSES.includes(className)) {
       if (shouldApplyTemporaryClass()) {
         triggerTemporaryEffect(className);
@@ -637,6 +689,7 @@ function applyVisualEffects(subtitleItem) {
       return;
     }
 
+    // Voeg persistent effecten toe als ze van toepassing zijn voor het huidige experience level
     if (shouldApplyPersistentClass(className)) {
       player.classList.add(className);
     }
@@ -647,15 +700,20 @@ function applyVisualEffects(subtitleItem) {
 /* MARK: SUBTITLE RENDERING */
 /****************************/
 
+// reset subtitle text en classes
 function resetSubtitle() {
   subtitle.textContent = "";
   subtitle.className = "subtitle";
 }
 
+// Render de juiste ondertitel en visuele effecten op basis van de huidige tijd van de video
 function renderSubtitle() {
   const currentTime = video.currentTime;
+  
+  // bepaal welk subtitle item actief is op basis van de huidige tijd
   const currentSubtitle = getCurrentSubtitle(currentTime);
 
+  // als er geen actief subtitle item is, reset de ondertitel en verwijder alle visuele effecten
   if (!currentSubtitle) {
     resetSubtitle();
     clearPersistentVisualEffects();
@@ -664,14 +722,18 @@ function renderSubtitle() {
     return;
   }
 
+  // update de tekst van de ondertitel afhankelijk van het experience level
   subtitle.textContent = getSubtitleText(currentSubtitle);
 
+  // bouw de lijst van CSS classes voor de ondertitel, afhankelijk van het experience level en het type van het subtitle item
   const classes = ["subtitle", getModeClass()];
 
+  // voeg type classes toe als ze aanwezig zijn in het subtitle item, zodat er specifieke styling kunnen toepassen
   if (currentSubtitle.type) {
     classes.push(...currentSubtitle.type.split(" "));
   }
 
+  // update de className van de ondertitel element, zodat de juiste styling wordt toegepast
   subtitle.className = classes.join(" ");
   subtitle.style.fontSize = `${state.fontSize}px`;
 
@@ -687,6 +749,7 @@ function renderSubtitle() {
 /* MARK: SETTINGS ACTIONS */
 /**************************/
 
+// Font size verhogen
 function increaseFontSize() {
   if (state.fontSize < FONT_SIZE_MAX) {
     state.fontSize += FONT_SIZE_STEP;
@@ -695,6 +758,7 @@ function increaseFontSize() {
   }
 }
 
+// font size verlagen
 function decreaseFontSize() {
   if (state.fontSize > FONT_SIZE_MIN) {
     state.fontSize -= FONT_SIZE_STEP;
@@ -703,8 +767,11 @@ function decreaseFontSize() {
   }
 }
 
+// update geselecteerde experience level
 function setExperienceLevel(level) {
   state.experienceLevel = Number(level);
+
+  // Reset actieve visuele state
   state.currentVisualKey = "";
 
   updateModeUI();
@@ -712,6 +779,7 @@ function setExperienceLevel(level) {
   renderSubtitle();
 }
 
+// toggle fullscreen modus aan of uit
 function toggleFullscreen() {
   if (!document.fullscreenElement) {
     player.requestFullscreen();
@@ -724,9 +792,15 @@ function toggleFullscreen() {
 /* MARK: EVENT LISTENERS */
 /*************************/
 
+// video event listeners
 function bindVideoEvents() {
+
+  // Update ondertiteling constant tijdens het afspelen van de video
   video.addEventListener("timeupdate", renderSubtitle);
 
+  // Re-render ondertiteling en reset visuele effecten bij het zoeken in de 
+  // video, of bij play/pause, zodat de juiste ondertiteling en effecten 
+  // worden getoond op het nieuwe tijdstip
   video.addEventListener("seeked", () => {
     state.currentVisualKey = "";
     renderSubtitle();
@@ -740,16 +814,20 @@ function bindVideoEvents() {
   video.addEventListener("pause", renderSubtitle);
 }
 
+// control event listeners
 function bindControlEvents() {
   increaseFontBtn.addEventListener("click", increaseFontSize);
   decreaseFontBtn.addEventListener("click", decreaseFontSize);
 
+  // Update experience mode
   experienceRange.addEventListener("input", (event) => {
     setExperienceLevel(event.target.value);
   });
 
+  // Toggle fullscreen
   fullscreenBtn.addEventListener("click", toggleFullscreen);
 
+  // update fullscreen button label
   document.addEventListener("fullscreenchange", updateFullscreenButton);
 }
 
@@ -757,17 +835,23 @@ function bindControlEvents() {
 /* MARK: INIT */
 /**************/
 
+// Init functie
 function init() {
+  // Laadt opgeslagen preferenties
   loadPreferences();
 
+  // Setup IU
   updateModeUI();
   updateFontUI();
   updateFullscreenButton();
 
+  // register event listeners
   bindVideoEvents();
   bindControlEvents();
 
+  // initiele render van de ondertiteling
   renderSubtitle();
 }
 
+// start de applicatie
 init();

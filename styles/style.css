@@ -40,7 +40,7 @@ body.experience-full {
   background: radial-gradient(circle at top, #2a1740, #050505 62%);
 }
 
-/* Accent-backgrounds override experience backgrounds */
+/* accent achtergrond die experience backgrounds override */
 body.experience-enhanced.bg-music,
 body.experience-full.bg-music {
   background: radial-gradient(
@@ -86,7 +86,7 @@ body.experience-full.bg-awkward {
   );
 }
 
-/* Full mode: over the top */
+/* Volledige modus: over de top */
 body.experience-full.bg-music {
   background:
     radial-gradient(circle at 50% 40%, rgba(129, 212, 250, 0.46), transparent 35%),
@@ -181,9 +181,9 @@ video {
   display: block;
 }
 
-/*********************/
-/* SIDE ACCENTS */
-/*********************/
+/**********************/
+/* MARK: SIDE ACCENTS */
+/**********************/
 
 .side-accent {
   position: absolute;
@@ -309,9 +309,9 @@ video {
   background: linear-gradient(to top, rgba(214, 214, 214, 0.4), transparent);
 }
 
-/*********************/
-/* SUBTITLES */
-/*********************/
+/*******************/
+/* MARK: SUBTITLES */
+/*******************/
 
 .subtitle {
   position: absolute;
@@ -353,9 +353,9 @@ video {
   font-style: italic;
 }
 
-/*********************/
-/* CONTROLS */
-/*********************/
+/******************/
+/* MARK: CONTROLS */
+/******************/
 
 .controls-panel {
   margin-top: 1rem;
@@ -469,9 +469,9 @@ input[type="range"] {
   color: #e8f7ff;
 }
 
-/*********************/
-/* RESPONSIVE */
-/*********************/
+/********************/
+/* MARK: RESPONSIVE */
+/********************/
 
 @media (max-width: 700px) {
   .controls-header {
@@ -548,9 +548,9 @@ input[type="range"] {
   }
 }
 
-/*********************/
-/* TEXT ANIMATIONS */
-/*********************/
+/*************************/
+/* MARK: TEXT ANIMATIONS */
+/*************************/
 
 .mode-standard {
   animation: none !important;
