@@ -28,6 +28,8 @@ body.experience-off {
   background: #050505;
 }
 
+/* BRON: https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/gradient/ */
+/* https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/gradient/radial-gradient */
 body.experience-subtle {
   background: radial-gradient(circle at top, #111827, #050505 55%);
 }
@@ -473,6 +475,7 @@ input[type="range"] {
 /* MARK: RESPONSIVE */
 /********************/
 
+/* BRON: https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Media_queries/Using */
 @media (max-width: 700px) {
   .controls-header {
     flex-direction: column;
@@ -552,11 +555,12 @@ input[type="range"] {
 /* MARK: TEXT ANIMATIONS */
 /*************************/
 
+/* BRON: https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Animations */
 .mode-standard {
-  animation: none !important;
-  filter: none !important;
-  letter-spacing: 0 !important;
-  box-shadow: none !important;
+  animation: none;
+  filter: none ;
+  letter-spacing: 0; 
+  box-shadow: none;
 }
 
 .mode-exp-1.dialogue,
@@ -631,6 +635,7 @@ input[type="range"] {
   }
 }
 
+/* BRON: https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/transform */
 @keyframes fadeSlide {
   from {
     opacity: 0;

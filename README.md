@@ -454,12 +454,24 @@ Al deze principes hebben ervoor gezorgd dat ik op een andere manier naar toegank
 
 
 
+# Bronnen
+https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/video
 
+https://developer.mozilla.org/en-US/docs/Web/API/Fullscreen_API
 
+https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage
 
+https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Animations
 
+https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/transform
 
+https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/gradient/linear-gradient
 
+https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/gradient/radial-gradient
+
+https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/range
+
+https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Media_queries/Using
 
 
 

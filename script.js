@@ -463,6 +463,7 @@ const subtitles = [
 
 // functies om voorkeuren op te slaan
 // BRON: https://developer.mozilla.org/en-US/docs/Web/API/Storage/setItem
+// https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage
 function savePreferences() {
   localStorage.setItem("subtitleFontSize", String(state.fontSize));
   localStorage.setItem("experienceLevel", String(state.experienceLevel));
@@ -779,6 +780,7 @@ function setExperienceLevel(level) {
   renderSubtitle();
 }
 
+// BRON: https://developer.mozilla.org/en-US/docs/Web/API/Fullscreen_API
 // toggle fullscreen modus aan of uit
 function toggleFullscreen() {
   if (!document.fullscreenElement) {
