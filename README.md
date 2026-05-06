@@ -71,7 +71,7 @@ The original inclusive principle says that you should use conventions that peopl
 
 
 #### Prioritise identity
-Observing the situation of people with disabilities, and designing things especially for them is of course a good first step. But what if we let people with disabilities play an active role in the design process?4 Next to designing for people I have also designed with people, combining the insights and ideas of excluded people with the skills and knowledge of me as a webdesigner.
+Observing the situation of people with disabilities, and designing things especially for them is of course a good first step. But what if we let people with disabilities play an active role in the design process? Next to designing for people I have also designed with people, combining the insights and ideas of excluded people with the skills and knowledge of me as a webdesigner.
 
 
 #### Add nonsense
@@ -380,3 +380,88 @@ In de laatste dag heb ik gewerkt aan de feedback die ik nog heb gekregen van Vas
 Er wordt tijdens het afspelen op basis van de huidige ondertiteling een class op de body gezet. Dit wordt gecombineerd met de huidige experience modus om de juiste achtergrond kleur te krijgen.
 
 Dit maakt de 'volledig' modus dus net weer dat stapje extra zodat het visueel nog sterker is.
+
+
+# Reflectie
+Tijdens dit vak heb ik een interactievere en toegankelijke videospeler gemaakt voor Darice. Omdat zij nu doof is was het doel van mijn project om de ervaring van de video veel leuker, en interessanter te maken. Dit heb ik gedaan door geluid, sfeer en emoties visueel over te brengen door een aangepaste ondertiteling, in combinatie met animaties en verschillende visuele effecten.
+
+Aan het begin van dit vak lag de focus vooral op het maken van een hele toegankelijke ondertiteling waarin ik echt alles heb gedaan om zo goed mogelijk alles over te krijgen via tekst. Denk aan kleurgebruik, animaties en gewoon uitgebreide ondertiteling zelf. Later kreeg ik ook meer de feedback om wat meer te doen dan alleen de tekst, omdat dit eigenlijk nog niet echt genoeg was op zichzelf. Daarom heb ik uiteindelijk verschillende experience modes toegevoegd. Hiermee kan Darice zelf bepalen hoe intens de visuele ondersteuning moet zijn. In de standaard modus is alles rustig en overzichtelijk, terwijl de volledige modus juist alle effecten gebruikt die ik heb geïmplementeerd zoals bewegende tekst, kleuraccenten en achtergrondkleuren.
+
+Ik heb tijdens dit vak zowel redelijk wat CSS, maar ook JavaScript gebruikt. Zo heb ik geleerd hoe ik ondertiteling dynamisch kan aanpassen a.d.h.v. tijdcodes en hoe ik hier visuele effecten aan kan koppelen zoals spanning, harde geluiden of muziek. Later heb ik ook nog veel aandacht gegeven aan de structuur van mijn code en deze goed georganiseerd in verchillende onderdelen.
+
+Een van de belangrijkste inzizhten die ik tijdens dit vak heb op gedaan was dat toegangkelijkheid niet alleen betekent dat informatie beschikbaar is, maar dat dus ook sfeer, emotie en context duidelijk en van waarde moeten zijn voor de gebruiker. Door dus kleur, beweging en animaties te gebruiken kon ik geluid dus als het ware zichtbaar maken.
+
+Verder heb ik verschillende feedbackmomenten gebruikt om het project te verbeteren. Op basis van die feedback heb ik:
+
+- De algemene interface overzichtelijker gemaakt
+- De slider logischer gemaakt
+- De experience modus bedacht en uitgewerkt EN uitgereid
+- en de achtergrond laten reageren op de sfeer door kleuren te gebruiken
+
+Ik ben erg tevreden met mijn eindresultaat omdat het project zowel technisch uitdagend was, als dat het erg uitdagend was om te testen en de gebruikerseisen te vertalen naar mijn werk. Ook het bedenken van nieuwe ideeën was soms uitdagend.
+
+Als ik meer tijd had gehad zou ik graag nog aan automatische analyse van audio gewerkt en het toevoegen van nog meer effecten afhankelijk van emoties of geluidsrichting.
+
+Ik heb door deze opdracht niet alleen mijn technische vaardigheden verder uitgebreid, maar ook beter leren nadenken over gebruiksvriendelijkheid en digitale toegankelijkheid. 
+
+## Reflectie exclusive design principles
+Tijdens dit vak heb ik geprobeerd rekening te houden met de verschillende exclusive design principles. Deze hielpen mij om beter na te denken over de ervaring van de gebruiker.
+
+### Study situation
+Bij dit principe gaat het om het begrijpen van de situatie van de gebruiker. In mijn project is dat dus Darice, iemand die op latere leeftijd doof is geworden. Hierdoor realiseerde ik mij dat een standaard ondertiteling nooit genoeg is en te weining informatie geeft om een film of serie volledig te kunnen volgen. vaak komen geluidseffecten, sfeer en emotie dus niet goed over.
+
+Ik ben dus na gaan denken over verschillende manieren om geluid visueel te maken. Daarom heb ik geprobeerd sfeer en emotie toe te voegen in de ondertiteling, geluidseffecten zichtbaar maken door kleur en animaties, en verschillende modussen gemaakt zodat Darice hier zelf de controle over heeft.
+
+Ik heb dus verder gekeken dan alleen toegankelijkheid in de technische betekenis.
+
+### Ignore conventions
+Normale videospelers en ondertiteling volgen vaak standaard conventies. Tijdens mijn project merkte ik dat deze conventies eigenlijk niet altijd goed werken voor iemand die afhankelijk is van visie. 
+
+Daarom heb ik bewust afgeweken van de standaard ondertiteling. I.p.v. alleen de standaard witte tekst onderaan het scherm heb ik nu:
+
+- geanimeerde ondertiteling
+- kleuraccenten
+- bewegende tekst voor visuele feedback
+- een experience slider gemaakt
+
+Hiermee heb ik geprobeerd om een videospeler te maken die past bij wat Darice nodig heeft en wilt, terwijl dit natuurlijk wel afwijkt van de traditionele videospelers.
+
+
+### Prioritise identity
+Tijdens dit vak hebben we verschillende feedbackmomenten gehad met Darice en deze heb ik gebruikt om het ontwerp steeds weer aan te passen. Zo ontwierp ik dus niet alleen voor de gebruiker, maar ook met.
+
+Een voorbeeld hiervan is de feedback die ik heb gekregen dat de experience modus niet alleen de ondertiteling moet aanpassen, maar ook het beeld op de achtergrond. Ik heb dus op basis van die feedback mijn project uitgebreid met achtergrondkleuren en visuele accenten die reageren op sfeer en geluid. 
+
+Zo krijg je echt een tevrede gebruiker.
+
+
+
+### Add nonesense
+Dit is eigenlijk de leukste maar ook het moeilijkste principe, omdat het lastig is om iets te bedenken wat eigenlijk een beetje tegenstrijdig voelt. Daarom heb ik geprobeerd om op een creatieve manier verschillende, niet standaard, elementen toe te voegen.
+
+Voorbeelden zijn:
+
+- Pulserende ondertiteling
+- Bewegende tekst bij spanning
+- Kleurveranderingen op de achtergrond
+- Visuele effecten die reageren op geluid
+
+Sommige van deze ideeën zijn voor mijn gevoel overdreven of ongebruikelijk, maar juist hierdoor ontstond er wel een ervaring die veel meer sfeer en ervaring overbrengt, en dat is precies wat Darice wilt. Ook voelde het project wat minder als een standaard toegankelijkheids opdracht en meer als een grappige manier om toegankelijkheid uit te breiden.
+
+## Conclusie
+Al deze principes hebben ervoor gezorgd dat ik op een andere manier naar toegankelijkheid kijk. Ik heb geleerd dat toegankelijkheid niet altijd draait om regels volgen, maar ook om empathie, experimenten en het begrijpen van de gebruiker.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
