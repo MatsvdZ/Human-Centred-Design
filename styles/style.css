@@ -1,16 +1,125 @@
-/*********************/
-/* MARK: BASE STYLES */
-/*********************/
-
 * {
   box-sizing: border-box;
 }
 
+:root {
+  --bg: #050505;
+  --panel: rgba(18, 18, 18, 0.88);
+  --panel-border: rgba(255, 255, 255, 0.12);
+  --text: #ffffff;
+  --muted: #bdbdbd;
+  --blue: #81d4fa;
+  --yellow: #ffd54f;
+  --red: #ff6b6b;
+  --purple: #c084fc;
+  --awkward: #d6d6d6;
+}
+
 body {
   margin: 0;
-  background: black;
-  color: white;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
   font-family: Arial, Helvetica, sans-serif;
+  transition: background 0.45s ease;
+}
+
+body.experience-off {
+  background: #050505;
+}
+
+body.experience-subtle {
+  background: radial-gradient(circle at top, #111827, #050505 55%);
+}
+
+body.experience-enhanced {
+  background: radial-gradient(circle at top, #1e1b4b, #050505 60%);
+}
+
+body.experience-full {
+  background: radial-gradient(circle at top, #2a1740, #050505 62%);
+}
+
+/* Accent-backgrounds override experience backgrounds */
+body.experience-enhanced.bg-music,
+body.experience-full.bg-music {
+  background: radial-gradient(
+    circle at center,
+    rgba(129, 212, 250, 0.32),
+    #050505 65%
+  );
+}
+
+body.experience-enhanced.bg-tense,
+body.experience-full.bg-tense {
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 107, 107, 0.34),
+    #050505 65%
+  );
+}
+
+body.experience-enhanced.bg-sound,
+body.experience-full.bg-sound {
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 213, 79, 0.3),
+    #050505 65%
+  );
+}
+
+body.experience-enhanced.bg-focus,
+body.experience-full.bg-focus {
+  background: radial-gradient(
+    circle at center,
+    rgba(192, 132, 252, 0.33),
+    #050505 65%
+  );
+}
+
+body.experience-enhanced.bg-awkward,
+body.experience-full.bg-awkward {
+  background: radial-gradient(
+    circle at center,
+    rgba(214, 214, 214, 0.22),
+    #050505 65%
+  );
+}
+
+/* Full mode: over the top */
+body.experience-full.bg-music {
+  background:
+    radial-gradient(circle at 50% 40%, rgba(129, 212, 250, 0.46), transparent 35%),
+    radial-gradient(circle at 20% 20%, rgba(129, 212, 250, 0.25), transparent 30%),
+    #050505;
+}
+
+body.experience-full.bg-tense {
+  background:
+    radial-gradient(circle at 50% 40%, rgba(255, 107, 107, 0.5), transparent 35%),
+    radial-gradient(circle at 80% 20%, rgba(255, 107, 107, 0.3), transparent 30%),
+    #050505;
+}
+
+body.experience-full.bg-sound {
+  background:
+    radial-gradient(circle at 50% 40%, rgba(255, 213, 79, 0.45), transparent 35%),
+    radial-gradient(circle at 20% 75%, rgba(255, 213, 79, 0.28), transparent 30%),
+    #050505;
+}
+
+body.experience-full.bg-focus {
+  background:
+    radial-gradient(circle at 50% 40%, rgba(192, 132, 252, 0.48), transparent 35%),
+    radial-gradient(circle at 80% 80%, rgba(192, 132, 252, 0.28), transparent 30%),
+    #050505;
+}
+
+body.experience-full.bg-awkward {
+  background:
+    radial-gradient(circle at 50% 40%, rgba(214, 214, 214, 0.34), transparent 35%),
+    radial-gradient(circle at 25% 75%, rgba(214, 214, 214, 0.18), transparent 30%),
+    #050505;
 }
 
 .page {
@@ -18,16 +127,38 @@ body {
   margin: 2rem auto;
 }
 
+.hero {
+  margin-bottom: 1.5rem;
+}
+
+.eyebrow {
+  margin: 0 0 0.4rem;
+  color: var(--blue);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
+
 h1 {
-  margin-bottom: 0.5rem;
-  font-size: 1.9rem;
+  margin: 0 0 0.5rem;
+  font-size: clamp(2rem, 5vw, 4rem);
+  line-height: 1;
 }
 
 .intro {
-  margin-top: 0;
-  margin-bottom: 1.5rem;
-  color: #d0d0d0;
-  line-height: 1.5;
+  max-width: 720px;
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.player-card {
+  padding: 1rem;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
 }
 
 .player {
@@ -35,7 +166,14 @@ h1 {
   width: 100%;
   margin: 0 auto;
   overflow: hidden;
+  border-radius: 18px;
   background: black;
+}
+
+body.experience-full .player {
+  box-shadow:
+    0 0 40px rgba(129, 212, 250, 0.25),
+    0 0 80px rgba(255, 107, 107, 0.18);
 }
 
 video {
@@ -43,19 +181,8 @@ video {
   display: block;
 }
 
-.video-overlay {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  opacity: 0;
-  pointer-events: none;
-  transition:
-    opacity 0.25s ease,
-    background 0.25s ease;
-}
-
 /*********************/
-/* MARK: SIDE ACCENT */
+/* SIDE ACCENTS */
 /*********************/
 
 .side-accent {
@@ -63,171 +190,128 @@ video {
   z-index: 1;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.25s ease;
+  transition: opacity 0.3s ease;
 }
 
 .side-accent.left {
   top: 0;
   left: 0;
-  width: 20px;
+  width: 48px;
   height: 100%;
-  background: linear-gradient(
-    to right,
-    rgba(255, 255, 255, 0.6),
-    rgba(255, 255, 255, 0)
-  );
 }
 
 .side-accent.right {
   top: 0;
   right: 0;
-  width: 20px;
+  width: 48px;
   height: 100%;
-  background: linear-gradient(
-    to left,
-    rgba(255, 255, 255, 0.6),
-    rgba(255, 255, 255, 0)
-  );
 }
 
 .side-accent.top {
   top: 0;
   left: 0;
   width: 100%;
-  height: 20px;
-  background: linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0.6),
-    rgba(255, 255, 255, 0)
-  );
+  height: 48px;
 }
 
 .side-accent.bottom {
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 20px;
-  background: linear-gradient(
-    to top,
-    rgba(255, 255, 255, 0.6),
-    rgba(255, 255, 255, 0)
-  );
+  height: 48px;
 }
 
-/* muziek */
-.player.accent-music .side-accent.left {
+.player.accent-music .side-accent,
+.player.accent-tense .side-accent,
+.player.accent-sound .side-accent,
+.player.accent-focus .side-accent,
+.player.accent-awkward .side-accent {
   opacity: 1;
-  background: linear-gradient(to right, #81d4fae6, rgba(129, 212, 250, 0));
+}
+
+.player.accent-music .side-accent.left {
+  background: linear-gradient(to right, rgba(129, 212, 250, 0.85), transparent);
 }
 
 .player.accent-music .side-accent.right {
-  opacity: 1;
-  background: linear-gradient(to left, #81d4fae6, rgba(129, 212, 250, 0));
+  background: linear-gradient(to left, rgba(129, 212, 250, 0.85), transparent);
 }
 
 .player.accent-music .side-accent.top {
-  opacity: 1;
-  background: linear-gradient(to bottom, #81d4fae6, rgba(129, 212, 250, 0));
+  background: linear-gradient(to bottom, rgba(129, 212, 250, 0.6), transparent);
 }
 
 .player.accent-music .side-accent.bottom {
-  opacity: 1;
-  background: linear-gradient(to top, #81d4fae6, rgba(255, 255, 255, 0));
+  background: linear-gradient(to top, rgba(129, 212, 250, 0.6), transparent);
 }
 
-/* spanning / paniek */
 .player.accent-tense .side-accent.left {
-  opacity: 1;
-  background: linear-gradient(to right, #ff6b6b, rgba(129, 212, 250, 0));
+  background: linear-gradient(to right, rgba(255, 107, 107, 0.9), transparent);
 }
 
 .player.accent-tense .side-accent.right {
-  opacity: 1;
-  background: linear-gradient(to left, #ff6b6b, rgba(129, 212, 250, 0));
+  background: linear-gradient(to left, rgba(255, 107, 107, 0.9), transparent);
 }
 
 .player.accent-tense .side-accent.top {
-  opacity: 1;
-  background: linear-gradient(to bottom, #ff6b6b, rgba(129, 212, 250, 0));
+  background: linear-gradient(to bottom, rgba(255, 107, 107, 0.65), transparent);
 }
 
 .player.accent-tense .side-accent.bottom {
-  opacity: 1;
-  background: linear-gradient(to top, #ff6b6b, rgba(255, 255, 255, 0));
+  background: linear-gradient(to top, rgba(255, 107, 107, 0.65), transparent);
 }
 
-/* geluidseffect */
-
 .player.accent-sound .side-accent.left {
-  opacity: 1;
-  background: linear-gradient(to right, #ffd54f, rgba(129, 212, 250, 0));
+  background: linear-gradient(to right, rgba(255, 213, 79, 0.9), transparent);
 }
 
 .player.accent-sound .side-accent.right {
-  opacity: 1;
-  background: linear-gradient(to left, #ffd54f, rgba(129, 212, 250, 0));
+  background: linear-gradient(to left, rgba(255, 213, 79, 0.9), transparent);
 }
 
 .player.accent-sound .side-accent.top {
-  opacity: 1;
-  background: linear-gradient(to bottom, #ffd54f, rgba(129, 212, 250, 0));
+  background: linear-gradient(to bottom, rgba(255, 213, 79, 0.65), transparent);
 }
 
 .player.accent-sound .side-accent.bottom {
-  opacity: 1;
-  background: linear-gradient(to top, #ffd54f, rgba(255, 255, 255, 0));
+  background: linear-gradient(to top, rgba(255, 213, 79, 0.65), transparent);
 }
 
-/* awkward / ongemakkelijk */
-.player.accent-awkward .side-accent.left {
-  opacity: 1;
-  background: linear-gradient(to right, #d6d6d6, rgba(129, 212, 250, 0));
-}
-
-.player.accent-awkward .side-accent.right {
-  opacity: 1;
-  background: linear-gradient(to left, #d6d6d6, rgba(129, 212, 250, 0));
-}
-
-.player.accent-awkward .side-accent.top {
-  opacity: 1;
-  background: linear-gradient(to bottom, #d6d6d6, rgba(129, 212, 250, 0));
-}
-
-.player.accent-awkward .side-accent.bottom {
-  opacity: 1;
-  background: linear-gradient(to top, #d6d6d6, rgba(255, 255, 255, 0));
-}
-
-/* focus / belangrijk moment */
 .player.accent-focus .side-accent.left {
-  opacity: 1;
-  background: linear-gradient(to right, #c084fc, rgba(129, 212, 250, 0));
+  background: linear-gradient(to right, rgba(192, 132, 252, 0.85), transparent);
 }
 
 .player.accent-focus .side-accent.right {
-  opacity: 1;
-  background: linear-gradient(to left, #c084fc, rgba(129, 212, 250, 0));
+  background: linear-gradient(to left, rgba(192, 132, 252, 0.85), transparent);
 }
 
 .player.accent-focus .side-accent.top {
-  opacity: 1;
-  background: linear-gradient(to bottom, #c084fc, rgba(129, 212, 250, 0));
+  background: linear-gradient(to bottom, rgba(192, 132, 252, 0.6), transparent);
 }
 
 .player.accent-focus .side-accent.bottom {
-  opacity: 1;
-  background: linear-gradient(to top, #c084fc, rgba(255, 255, 255, 0));
+  background: linear-gradient(to top, rgba(192, 132, 252, 0.6), transparent);
 }
 
-/* optionele pulse voor muziek */
-.player.accent-music .side-accent {
-  animation: accentPulse 1s ease-in-out infinite;
+.player.accent-awkward .side-accent.left {
+  background: linear-gradient(to right, rgba(214, 214, 214, 0.55), transparent);
 }
 
-/*******************/
-/* MARK: SUBTITLES */
-/*******************/
+.player.accent-awkward .side-accent.right {
+  background: linear-gradient(to left, rgba(214, 214, 214, 0.55), transparent);
+}
+
+.player.accent-awkward .side-accent.top {
+  background: linear-gradient(to bottom, rgba(214, 214, 214, 0.4), transparent);
+}
+
+.player.accent-awkward .side-accent.bottom {
+  background: linear-gradient(to top, rgba(214, 214, 214, 0.4), transparent);
+}
+
+/*********************/
+/* SUBTITLES */
+/*********************/
 
 .subtitle {
   position: absolute;
@@ -244,7 +328,7 @@ video {
   font-size: 1.5rem;
   color: white;
   background: rgba(0, 0, 0, 0.82);
-  border-radius: 10px;
+  border-radius: 12px;
   text-shadow: 2px 2px 8px black;
   pointer-events: none;
   white-space: normal;
@@ -255,79 +339,219 @@ video {
   max-width: 70%;
 }
 
-/* subtitle styles */
 .dialogue {
   color: white;
 }
 
 .sound {
-  color: #ffd54f;
+  color: var(--yellow);
   font-style: italic;
 }
 
 .music {
-  color: #81d4fa;
+  color: var(--blue);
   font-style: italic;
 }
 
-/******************/
-/* MARK: CONTROLS */
-/******************/
+/*********************/
+/* CONTROLS */
+/*********************/
 
 .controls-panel {
   margin-top: 1rem;
+  padding: clamp(1rem, 2.5vw, 1.5rem);
+  border-radius: 18px;
+  background: var(--panel);
+  border: 1px solid var(--panel-border);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(12px);
+
   display: grid;
-  gap: 1rem;
-  background: #111;
-  border: 1px solid #222;
-  border-radius: 12px;
-  padding: 1rem;
+  gap: 1.25rem;
 }
 
-.top-controls,
-.experience-row,
-.status-box {
+.controls-header {
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.controls-header h2 {
+  margin: 0;
+  font-size: clamp(1.1rem, 2vw, 1.3rem);
+}
+
+.controls-header p {
+  margin: 0.3rem 0 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.font-controls {
+  display: flex;
   align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+
+  padding: 1rem;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.control-title {
+  font-weight: 700;
+  color: #eaeaea;
+}
+
+.button-group {
+  display: flex;
+  gap: 0.5rem;
 }
 
 button {
-  font-size: 1rem;
-  padding: 0.6rem 1rem;
-  cursor: pointer;
   border: none;
-  border-radius: 8px;
-  background: #f2f2f2;
-  color: #111;
+  border-radius: 999px;
+  padding: 0.65rem 1rem;
+  min-width: 48px;
+  font-weight: 700;
+  cursor: pointer;
+  background: white;
+  color: black;
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
 }
 
 button:hover {
+  transform: translateY(-1px);
   opacity: 0.92;
 }
 
-.experience-row label {
-  min-width: 8rem;
-  font-weight: 700;
+.primary-btn {
+  background: var(--blue);
+  white-space: nowrap;
 }
 
-.experience-row input[type="range"] {
-  flex: 1;
-  min-width: 180px;
+.experience-control {
+  display: grid;
+  gap: 0.75rem;
+
+  padding: 1rem;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.04);
 }
 
+.experience-labels {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+  color: #cfcfcf;
+  font-size: clamp(0.7rem, 2vw, 0.85rem);
+  text-align: center;
+}
+
+input[type="range"] {
+  width: 100%;
+  accent-color: var(--blue);
+}
+
+.mode-card,
 .status-pill {
-  background: #1b1b1b;
-  border: 1px solid #2a2a2a;
+  width: fit-content;
+  max-width: 100%;
+  padding: 0.55rem 0.9rem;
   border-radius: 999px;
-  padding: 0.4rem 0.7rem;
-  color: #ddd;
+  background: rgba(129, 212, 250, 0.14);
+  border: 1px solid rgba(129, 212, 250, 0.35);
+  color: #e8f7ff;
 }
 
-/***************/
-/* MARK: MODES */
-/***************/
+/*********************/
+/* RESPONSIVE */
+/*********************/
+
+@media (max-width: 700px) {
+  .controls-header {
+    flex-direction: column;
+  }
+
+  .primary-btn {
+    width: 100%;
+  }
+
+  .font-controls {
+    display: grid;
+    grid-template-columns: 1fr auto;
+  }
+
+  .font-controls .control-title {
+    grid-column: 1 / -1;
+  }
+
+  .button-group {
+    grid-column: 1;
+  }
+
+  .font-controls .status-pill {
+    grid-column: 2;
+    align-self: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .page {
+    width: 95vw;
+    margin: 1rem auto;
+  }
+
+  .player-card {
+    padding: 0.65rem;
+    border-radius: 18px;
+  }
+
+  .controls-panel {
+    padding: 0.85rem;
+  }
+
+  .font-controls,
+  .experience-control {
+    padding: 0.85rem;
+  }
+
+  .font-controls {
+    grid-template-columns: 1fr;
+  }
+
+  .button-group {
+    width: 100%;
+  }
+
+  .button-group button {
+    flex: 1;
+  }
+
+  .font-controls .status-pill {
+    grid-column: 1;
+  }
+
+  .experience-labels {
+    grid-template-columns: repeat(2, 1fr);
+    text-align: left;
+  }
+
+  .mode-card {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/*********************/
+/* TEXT ANIMATIONS */
+/*********************/
+
 .mode-standard {
   animation: none !important;
   filter: none !important;
@@ -382,7 +606,6 @@ button:hover {
 .mode-exp-3.music,
 .mode-exp-3.pulse {
   animation: pulseStrong 0.75s ease;
-  box-shadow: 0 0 18px rgba(129, 212, 250, 0.2);
 }
 
 .mode-exp-3.loud,
@@ -394,26 +617,15 @@ button:hover {
   animation: awkwardTextStrong 0.38s ease;
 }
 
-/***********************/
-/* MARK: VIDEO EFFECTS */
-/***********************/
-
 .player.shake-video {
   animation: videoShake 0.28s ease;
 }
-
-.player.video-jump {
-  animation: video-jump 0.3s ease;
-}
-
-/*******************/
-/* MARK: KEYFRAMES */
-/*******************/
 
 @keyframes softAppear {
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -424,6 +636,7 @@ button:hover {
     opacity: 0;
     transform: translateX(-50%) translateY(8px);
   }
+
   to {
     opacity: 1;
     transform: translateX(-50%) translateY(0);
@@ -435,6 +648,7 @@ button:hover {
     opacity: 0;
     filter: blur(2px);
   }
+
   to {
     opacity: 1;
     filter: blur(0);
@@ -446,6 +660,7 @@ button:hover {
     opacity: 0;
     filter: blur(3px);
   }
+
   to {
     opacity: 1;
     filter: blur(0);
@@ -456,9 +671,11 @@ button:hover {
   0% {
     transform: translateX(-50%) scale(1);
   }
+
   50% {
     transform: translateX(-50%) scale(1.03);
   }
+
   100% {
     transform: translateX(-50%) scale(1);
   }
@@ -468,9 +685,11 @@ button:hover {
   0% {
     transform: translateX(-50%) scale(1);
   }
+
   50% {
-    transform: translateX(-50%) scale(1.06);
+    transform: translateX(-50%) scale(1.055);
   }
+
   100% {
     transform: translateX(-50%) scale(1);
   }
@@ -480,15 +699,19 @@ button:hover {
   0% {
     transform: translateX(-50%) translateX(0);
   }
+
   25% {
     transform: translateX(-50%) translateX(-4px);
   }
+
   50% {
     transform: translateX(-50%) translateX(4px);
   }
+
   75% {
     transform: translateX(-50%) translateX(-3px);
   }
+
   100% {
     transform: translateX(-50%) translateX(0);
   }
@@ -498,15 +721,19 @@ button:hover {
   0% {
     transform: translateX(-50%) translateX(0);
   }
+
   25% {
     transform: translateX(-50%) translateX(-8px);
   }
+
   50% {
     transform: translateX(-50%) translateX(8px);
   }
+
   75% {
     transform: translateX(-50%) translateX(-6px);
   }
+
   100% {
     transform: translateX(-50%) translateX(0);
   }
@@ -517,10 +744,12 @@ button:hover {
     opacity: 0;
     letter-spacing: 0;
   }
+
   50% {
     opacity: 1;
     letter-spacing: 0.7px;
   }
+
   100% {
     letter-spacing: 0;
   }
@@ -531,10 +760,12 @@ button:hover {
     opacity: 0;
     letter-spacing: 0;
   }
+
   50% {
     opacity: 1;
     letter-spacing: 1.2px;
   }
+
   100% {
     letter-spacing: 0;
   }
@@ -544,40 +775,35 @@ button:hover {
   0% {
     transform: translateX(0);
   }
+
   25% {
-    transform: translateX(-8px);
+    transform: translateX(-4px);
   }
+
   50% {
-    transform: translateX(8px);
+    transform: translateX(4px);
   }
+
   75% {
-    transform: translateX(-7px);
+    transform: translateX(-3px);
   }
+
   100% {
     transform: translateX(0);
   }
 }
 
-@keyframes accentPulse {
-  0% {
-    opacity: 0.45;
+@media (max-width: 700px) {
+  .controls-header {
+    align-items: flex-start;
+    flex-direction: column;
   }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0.45;
-  }
-}
 
-@keyframes video-jump {
-  0% {
-    transform: translateX(0) translateY(0);
+  .primary-btn {
+    width: 100%;
   }
-  50% {
-    transform: translateX(0) translateY(-30px);
-  }
-  100% {
-    transform: translateX(0) translateY(0);
+
+  .experience-labels {
+    font-size: 0.75rem;
   }
 }

@@ -12,14 +12,13 @@ const fullscreenBtn = document.getElementById("fullscreenBtn");
 
 const experienceRange = document.getElementById("experienceRange");
 const experienceLabel = document.getElementById("experienceLabel");
-const modeStatus = document.getElementById("modeStatus");
 const fontSizeStatus = document.getElementById("fontSizeStatus");
 
 /****************/
 /* MARK: CONFIG */
 /****************/
 
-const MODE_LABELS = ["Standaard", "Subtiel", "Verrijkt", "Volledig"];
+const MODE_LABELS = ["Uit", "Subtiel", "Verrijkt", "Volledig"];
 
 const PERSISTENT_VISUAL_CLASSES = [
   "accent-music",
@@ -515,7 +514,23 @@ function updateModeUI() {
 
   experienceRange.value = String(state.experienceLevel);
   experienceLabel.textContent = label;
-  modeStatus.textContent = label;
+
+  document.body.classList.remove(
+    "experience-off",
+    "experience-subtle",
+    "experience-enhanced",
+    "experience-full",
+  );
+
+  if (state.experienceLevel === 0) {
+    document.body.classList.add("experience-off");
+  } else if (state.experienceLevel === 1) {
+    document.body.classList.add("experience-subtle");
+  } else if (state.experienceLevel === 2) {
+    document.body.classList.add("experience-enhanced");
+  } else {
+    document.body.classList.add("experience-full");
+  }
 }
 
 function updateFontUI() {
@@ -532,6 +547,34 @@ function updateFullscreenButton() {
 /************************/
 /* MARK: VISUAL EFFECTS */
 /************************/
+
+function updateBackground(accentClass) {
+  const body = document.body;
+
+  body.classList.remove(
+    "bg-music",
+    "bg-tense",
+    "bg-sound",
+    "bg-focus",
+    "bg-awkward",
+  );
+
+  if (state.experienceLevel < 2) return; // alleen vanaf 'verrijkt'
+
+  if (!accentClass) return;
+
+  if (accentClass.includes("accent-music")) {
+    body.classList.add("bg-music");
+  } else if (accentClass.includes("accent-tense")) {
+    body.classList.add("bg-tense");
+  } else if (accentClass.includes("accent-sound")) {
+    body.classList.add("bg-sound");
+  } else if (accentClass.includes("accent-focus")) {
+    body.classList.add("bg-focus");
+  } else if (accentClass.includes("accent-awkward")) {
+    body.classList.add("bg-awkward");
+  }
+}
 
 function clearPersistentVisualEffects() {
   player.classList.remove(...PERSISTENT_VISUAL_CLASSES);
@@ -576,11 +619,15 @@ function shouldApplyTemporaryClass() {
 function applyVisualEffects(subtitleItem) {
   clearPersistentVisualEffects();
 
-  if (!subtitleItem || !subtitleItem.visual || state.experienceLevel === 0) {
+  if (!subtitleItem || !subtitleItem.visual) {
+    updateBackground("");
     return;
   }
 
   const visualClasses = subtitleItem.visual.split(" ").filter(Boolean);
+
+  // 🔥 update background
+  updateBackground(subtitleItem.visual);
 
   visualClasses.forEach((className) => {
     if (TEMPORARY_VISUAL_CLASSES.includes(className)) {
@@ -612,6 +659,7 @@ function renderSubtitle() {
   if (!currentSubtitle) {
     resetSubtitle();
     clearPersistentVisualEffects();
+    updateBackground(""); // 🔥 belangrijk
     state.currentVisualKey = "";
     return;
   }
