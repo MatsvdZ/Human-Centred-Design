@@ -58,9 +58,10 @@ const state = {
 /* MARK: SUBTITLES TEXT */
 /************************/
 
-// uitgebreide ondertiteldata met tijdstippen, tekst voor
+// uitgebreide ondertiteling data met tijdstippen, tekst voor
 // standaard en verrijkte modus, type voor styling, 
 // en visuele accenten
+// BRON: Hulp van ChatGPT bij het maken van de ondertiteling data structuur, en het bedenken van creatieve teksten en effecten
 const subtitles = [
   {
     start: 0,
@@ -471,6 +472,7 @@ function savePreferences() {
 
 // Laadt voorkeuren van de gebruiker uit localStorage en past deze toe op de state
 // BRON: https://developer.mozilla.org/en-US/docs/Web/API/Storage/getItem
+// ChatGPT voor het idee van het opslaan en laden van meerdere voorkeuren in één functie
 function loadPreferences() {
   const savedFontSize = localStorage.getItem("subtitleFontSize");
   const savedExperience = localStorage.getItem("experienceLevel");
@@ -494,6 +496,8 @@ function getModeLabel(level) {
 }
 
 // Juiste CSS class voor het huidige experience level, gebruikt voor styling
+// BRON: Hulp van ChatGPT om deze functie te maken, 
+// zodat ik makkelijk specifieke styling kan toepassen op de ondertiteling afhankelijk van het experience level
 function getModeClass() {
   switch (state.experienceLevel) {
     case 0:
@@ -525,6 +529,7 @@ function getSubtitleText(subtitleItem) {
 }
 
 // Bepaalt welk subtitle item momenteel actief is op basis van de huidige tijd van de video
+// Hulp van ChatGPT
 function getCurrentSubtitle(currentTime) {
   return subtitles.find(
     (item) => currentTime >= item.start && currentTime < item.end,
@@ -563,6 +568,7 @@ function updateModeUI() {
   }
 }
 
+// BRON: Hulp van ChatGPT om deze functie te maken, zodat de font size makkelijk aangepast kan worden en de UI altijd up-to-date is
 // Update de UI om het huidige font size te tonen en toe te passen op de ondertiteling
 function updateFontUI() {
   subtitle.style.fontSize = `${state.fontSize}px`;
@@ -570,6 +576,7 @@ function updateFontUI() {
 }
 
 // Update de tekst van de fullscreen knop afhankelijk van of we in fullscreen modus zijn of niet
+// BRON: https://developer.mozilla.org/en-US/docs/Web/API/Fullscreen_API
 function updateFullscreenButton() {
   fullscreenBtn.textContent = document.fullscreenElement
     ? "Exit fullscreen"
@@ -594,7 +601,7 @@ function updateBackground(accentClass) {
     "bg-awkward",
   );
 
-  // om te voorkomen dat we te veel visuele effecten hebben in de subtiele modus
+  // om te voorkomen dat er te veel visuele effecten hebben in de subtiele modus
   if (state.experienceLevel < 2) return; // alleen vanaf 'verrijkt'
 
   if (!accentClass) return;
